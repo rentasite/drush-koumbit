@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.19 2009/03/26 03:20:27 adrian Exp $
+// $Id: command.inc,v 1.20 2009/03/31 01:09:46 grugnog Exp $
 
 /**
  * @file
@@ -267,7 +267,7 @@ function _drush_find_commandfiles($phase) {
   switch ($phase) {
     case DRUSH_BOOTSTRAP_DRUSH :
       // Core commands shipping with drush
-      $searchpath[] = dirname(__FILE__);
+      $searchpath[] = realpath(dirname(__FILE__) . '/../commands/');
 
       // User commands, specified by 'include' option
       if ($include = drush_get_option(array('i', 'include'), FALSE)) {
@@ -275,7 +275,6 @@ function _drush_find_commandfiles($phase) {
           $searchpath[] = $path;
         }
       }
-      print_r($searchpath);
 
       // User commands, residing i ~/.drush
       if (!empty($_SERVER['HOME'])) {
