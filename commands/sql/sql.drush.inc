@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.3 2009/04/03 03:46:54 weitzman Exp $
+// $Id: sql.drush.inc,v 1.4 2009/04/03 04:00:19 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -86,8 +86,16 @@ function sql_drush_command() {
     ),
     'options' => array(
       '--skip-tables-key' => 'A key in the $skip_tables array. @see example.drushrc.php. Optional.',
-    ) + $options,
+      '--source_database' => 'The SOURCE DB connection key if using multiple connections in settings.php.',
+      '--destination_database' => 'The DESTINATION DB connection key if using multiple DB connections',
+    ),
   );
+  if (drush_drupal_major_version() >=7) {
+    $items['sql load']['options'] += array(
+      '--source_target' => 'The name of a target within the SOURCE database.',
+      '--destination_target' => 'The name of a target within the specified DESTINATION database.',
+    );
+  }
   $items['sql cli'] = array(
     'callback' => 'drush_sql_cli',
     'description' => 'Open a SQL command-line interface using Drupal’s credentials.',
