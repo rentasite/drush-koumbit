@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-// $Id: drush.php,v 1.51 2009/03/26 01:41:21 adrian Exp $
+// $Id: drush.php,v 1.52 2009/04/03 21:18:56 weitzman Exp $
 
 /**
  * @file
@@ -88,6 +88,9 @@ function drush_main() {
  * result of drush_get_error() if it wasn't.
  */
 function drush_shutdown() {
+  // Mysteriously make $user available during sess_write(). Avoids a NOTICE.
+  global $user; 
+  
   $phase = drush_get_context('DRUSH_BOOTSTRAP_PHASE');
   if (drush_get_context('DRUSH_BOOTSTRAPPING')) {
     switch ($phase) {
