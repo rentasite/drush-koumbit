@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.9 2009/04/05 22:32:59 adrian Exp $
+// $Id: environment.inc,v 1.10 2009/04/06 14:27:48 weitzman Exp $
 
 /**
  * @file
@@ -348,9 +348,6 @@ function _drush_bootstrap_drupal_login() {
 
   drush_drupal_login($drush_user);
 }
-
-
-
 
 
 /**
