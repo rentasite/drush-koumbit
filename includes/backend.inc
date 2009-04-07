@@ -1,5 +1,5 @@
 <?php
-// $Id: backend.inc,v 1.6 2009/04/01 23:12:14 adrian Exp $
+// $Id: backend.inc,v 1.7 2009/04/07 00:27:47 adrian Exp $
 
 /**
  * @file Drush backend API
@@ -127,7 +127,12 @@ function _drush_backend_integrate($data) {
   print ($data['output']);
   if (is_array($data['log'])) {
     foreach($data['log'] as $log) {
-      drush_log($log['message'], $log['type'], $log['error']); 
+      if (!is_null($log['error'])) {
+        drush_set_error($log['error'], $log['message']);
+      }
+      else {
+        drush_log($log['message'], $log['type'], $log['error']);
+      }
     }
   }
 }

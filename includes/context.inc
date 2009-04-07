@@ -1,5 +1,5 @@
 <?php
-// $Id: context.inc,v 1.3 2009/03/26 01:41:21 adrian Exp $
+// $Id: context.inc,v 1.4 2009/04/07 00:27:47 adrian Exp $
 /**
  * @file
  * The Drush context API implementation.
@@ -164,11 +164,12 @@ function drush_set_context($context, $value) {
  *   Otherwise only the requested context will be returned.
  *   If the context does not exist yet, it will be initialied to an empty array.
  */
-function &drush_get_context($context = null) {
+function &drush_get_context($context = null, $default = null) {
   static $cache = array();
   if (!is_null($context)) {
     if (!isset($cache[$context])) {
-      $cache[$context] = array();
+      $default = !is_null($default) ? $default : array();
+      $cache[$context] = $default;
     }
     return $cache[$context];
   }
