@@ -1,5 +1,5 @@
 <?php
-// $Id: update.inc,v 1.1 2009/04/08 01:16:44 grugnog Exp $
+// $Id: update.inc,v 1.2 2009/04/08 16:13:56 grugnog Exp $
 
 /**
  * Command callback. Displays update status info and allows to update installed modules.
@@ -115,7 +115,7 @@ function pm_update_packages($releases) {
     
     $source = $drupal_root .'/' . $release['path'];
 
-    $skip_backup = version_control_skip_backup();
+    $skip_backup = version_control_skip_backup($source);
     if (!count($skip_backup)) {
       $backup_dir = $drupal_root  . '/backup';
       drush_op('mkdir', $backup_dir, 0777);
