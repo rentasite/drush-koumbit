@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.2 2009/04/08 04:58:00 grugnog Exp $
+// $Id: pm.drush.inc,v 1.3 2009/04/08 05:02:53 grugnog Exp $
 
 /**
  * @file
@@ -392,6 +392,16 @@ function pm_info() {
   else {
     return drush_print_table($rows, FALSE, TRUE);
   }
+}
+
+/**
+ * Command callback. Refresh update status information.
+ */
+function pm_refresh() {
+  // We don't provide for other options here, so we supply an explicit path.
+  drush_include_engine('update_info', 'drupal', NULL, DRUSH_BASE_PATH . '/commands/pm/update_info');
+
+  _pm_refresh();
 }
 
 /**

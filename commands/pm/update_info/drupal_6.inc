@@ -1,5 +1,5 @@
 <?php
-// $Id: drupal_6.inc,v 1.2 2009/04/08 01:17:48 grugnog Exp $
+// $Id: drupal_6.inc,v 1.3 2009/04/08 05:02:53 grugnog Exp $
 
 function pm_update_filter(&$releases, &$updateable, &$rows) {
   foreach ($releases as $release) {
@@ -59,7 +59,7 @@ function pm_update_last_check() {
 /**
  * Command callback. Refresh update status information.
  */
-function pm_refresh() {
+function _pm_refresh() {
   drush_print(dt("Refreshing update status information ..."));
   update_refresh();
   drush_print(dt("Done."));
