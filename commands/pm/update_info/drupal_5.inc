@@ -1,4 +1,5 @@
 <?php
+// $Id: drupal_5.inc,v 1.2 2009/04/08 01:17:48 grugnog Exp $
 
 function pm_update_filter(&$releases, &$updateable, &$rows) {
   foreach ($releases as $release) {
