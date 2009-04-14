@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.11 2009/04/14 04:55:39 adrian Exp $
+// $Id: core.drush.inc,v 1.12 2009/04/14 06:16:35 adrian Exp $
 
 /**
  * @file
@@ -28,6 +28,10 @@ function core_drush_command() {
   );
   $items['cron'] = array(
     'description' => 'Run all cron hooks.',
+  );
+  $items['update'] = array(
+    'description' => dt('Execute the update.php process from the command line'),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_SITE,
   );
   $items['status'] = array(
     'description' => 'Provides a birds-eye view of the current Drupal installation, if any.',
@@ -91,6 +95,20 @@ function core_drush_command() {
     ),
   );
   return $items;
+}
+
+function core_drush_engine_drupal() {
+  $engines = array();
+  $engines['update'] = array();
+  return $engines;
+}
+
+/**
+ * Command handler. Execute update.php code from drush.
+ */
+function core_update() {
+  drush_include_engine('drupal', 'update', drush_drupal_major_version());
+  update_main();
 }
 
 

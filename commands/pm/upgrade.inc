@@ -1,5 +1,5 @@
 <?php
-// $Id: update.inc,v 1.2 2009/04/08 16:13:56 grugnog Exp $
+// $Id: upgrade.inc,v 1.1 2009/04/14 06:16:36 adrian Exp $
 
 /**
  * Command callback. Displays update status info and allows to update installed modules.

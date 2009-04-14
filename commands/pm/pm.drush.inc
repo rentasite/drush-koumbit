@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.8 2009/04/14 05:46:49 weitzman Exp $
+// $Id: pm.drush.inc,v 1.9 2009/04/14 06:16:36 adrian Exp $
 
 /**
  * @file
@@ -80,8 +80,8 @@ function pm_drush_command() {
     'description' => 'Refresh update status information',
     'drupal dependencies' => array('update'),
   );
-  $items['update'] = array(
-    'description' => 'Update your modules',
+  $items['upgrade'] = array(
+    'description' => 'Upgrade your modules',
     'drupal dependencies' => array('update'),
   ) + $engines;
   $items['info'] = array(
