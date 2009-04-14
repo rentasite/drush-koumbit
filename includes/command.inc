@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.25 2009/04/14 14:07:18 weitzman Exp $
+// $Id: command.inc,v 1.26 2009/04/14 21:19:09 adrian Exp $
 
 /**
  * @file
@@ -93,7 +93,7 @@ function drush_get_commands() {
       foreach ((array)$result as $key => $command) {
         // Add some defaults
         $command += array(
-          'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_FULL,
+          'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_LOGIN,
           'commandfile' => $commandfile,
           'path' => dirname($path),
           'engines' => array(), // Helpful for drush_show_help(). 
