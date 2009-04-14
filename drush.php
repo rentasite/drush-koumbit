@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-// $Id: drush.php,v 1.57 2009/04/14 03:36:18 adrian Exp $
+// $Id: drush.php,v 1.58 2009/04/14 04:49:01 adrian Exp $
 
 /**
  * @file
@@ -126,7 +126,7 @@ function drush_shutdown() {
  */
 function drush_drupal_login($drush_user) {
   global $user;
-  $user = module_invoke('user', 'load', is_numeric($drush_user) ? array('uid' => $drush_user) : array('name' => $drush_user));
+  $user = user_load(is_numeric($drush_user) ? array('uid' => $drush_user) : array('name' => $drush_user));
 
   if (empty($user)) {
     if (is_numeric($drush_user)) {

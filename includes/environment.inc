@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.13 2009/04/14 03:36:21 adrian Exp $
+// $Id: environment.inc,v 1.14 2009/04/14 04:49:03 adrian Exp $
 
 /**
  * @file
@@ -229,6 +229,29 @@ function drush_bootstrap_validate($phase) {
   }
   return $result_cache[$phase];
 }
+
+/**
+ * Bootstrap to the highest level possible, without triggering any errors.
+ */
+function drush_bootstrap_max() {
+  $phases = _drush_bootstrap_phases(); 
+  $phase_index = DRUSH_BOOTSTRAP_DRUSH;
+
+  // Try to bootstrap to the maximum possible level, without generating errors
+  foreach ($phases as $phase_index) {
+    if (drush_bootstrap_validate($phase_index)) {
+      if ($phase_index > drush_get_context('DRUSH_BOOTSTRAP_PHASE')) {
+        drush_bootstrap($phase_index);
+      }
+    }
+    else {
+      break;
+    }
+  }
+
+  return $phase_index;
+}
+
 
 /**
  * Helper function to collect any errors that occur during the bootstrap process.

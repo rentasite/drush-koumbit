@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.6 2009/04/14 03:36:20 adrian Exp $
+// $Id: pm.drush.inc,v 1.7 2009/04/14 04:49:02 adrian Exp $
 
 /**
  * @file
@@ -613,20 +613,8 @@ function pm_dl($full_project = NULL) {
     return drush_set_error('DRUSH_DL_EMPTY_PROJECT', "Please tell me what to download. (eg. `drush dl views` or `drush dl diff-6.x-2.0`)");
   }
 
-  $phases = _drush_bootstrap_phases(); 
-  $phase_index = DRUSH_BOOTSTRAP_DRUSH;
-
-  // Try to bootstrap to the maximum possible level, without generating errors
-  foreach ($phases as $phase_index) {
-    if (drush_bootstrap_validate($phase_index)) {
-      if ($phase_index > drush_get_context('DRUSH_BOOTSTRAP_PHASE')) {
-        drush_bootstrap($phase_index);
-      }
-    }
-    else {
-      break;
-    }
-  }
+  // bootstrap to the highest level possible.
+  drush_bootstrap_max();
 
   drush_include_engine('package_handler', drush_get_option('package-handler', 'wget'));
   drush_include_engine('version_control', drush_get_option('version-control', 'svn'));
