@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.13 2009/04/14 16:56:59 weitzman Exp $
+// $Id: core.drush.inc,v 1.14 2009/04/14 17:50:27 weitzman Exp $
 
 /**
  * @file
@@ -414,5 +414,5 @@ function core_watchdog_delete($type = NULL) {
 }
 
 function core_eval($command) {
-  eval($command);
+  eval($command . ';');
 }
