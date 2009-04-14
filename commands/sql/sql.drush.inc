@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.4 2009/04/03 04:00:19 weitzman Exp $
+// $Id: sql.drush.inc,v 1.5 2009/04/14 00:43:24 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -50,10 +50,10 @@ function sql_drush_command() {
   );
   $items['sql dump'] = array(
     'callback' => 'drush_sql_dump_execute',
-    'description' => 'Exports the Drupal DB as SQL using mysqldump or pg_dump.',
+    'description' => 'Exports the Drupal DB as SQL using mysqldump.',
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_CONFIGURATION,
     'examples' => array(
-      'drush sql dump --result-file=../18.sql' => 'Save SQL dump to the directory containing Drupal.',
+      'drush sql dump --result-file=../18.sql' => 'Save SQL dump to the directory above Drupal root.',
       'drush sql dump --skip-tables-key=common' => 'Skip standard tables. @see example.drushrc.com',
     ),
     'options' => array(
