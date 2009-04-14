@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.27 2009/04/14 03:36:21 adrian Exp $
+// $Id: drush.inc,v 1.28 2009/04/14 05:46:49 weitzman Exp $
 
 /**
  * @file
@@ -313,13 +313,20 @@ function drush_show_help($commands) {
       $commands = drush_get_commands();
       if (array_key_exists($commandstring, $commands)) {
         $command = $commands[$commandstring];
+        
+        // Merge in engine specific help.
+        foreach ($command['engines'] as $type => $description) {
+          $all_engines = drush_get_engines($type);
+          foreach ($all_engines as $name => $engine) {
+            $command = array_merge_recursive($command, $engine);
+          }
+        }
         $help = drush_command_invoke_all('drush_help', 'drush:'. $commandstring);
         if (!empty($help)) {
           drush_print(wordwrap(implode("\n", $help), 80));
           drush_print();
           
-          // TODO: Just let commands define their own sections?
-          // Standardization need not be mandated?
+          // TODO: Let commands define additional sections.
           $sections = array(
             'examples' => 'Examples',
             'arguments' => 'Arguments',
@@ -330,7 +337,8 @@ function drush_show_help($commands) {
             if (!empty($command[$key])) {
               drush_print(dt($value) . ':');
               foreach ($command[$key] as $name => $description) {
-                $rows[] = array($name, dt($description));
+                // '[command] is a token representing the current command. @see pm_drush_engine_version_control().
+                $rows[] = array(str_replace('[command]', $commandstring, $name), dt($description));
               }
               drush_print_table($rows, 2);
               unset($rows);
