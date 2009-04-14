@@ -1,38 +1,9 @@
 <?php
-// $Id: svn.inc,v 1.1 2009/04/08 01:16:44 grugnog Exp $
+// $Id: svn.inc,v 1.2 2009/04/14 02:46:20 weitzman Exp $
 
 /**
  * @file Drush pm SVN extension
  */
-
-/**
- * Implementation of hook_drush_help().
- */
-function version_control_drush_help($section) {
-  $help = '';
-  switch ($section) {
-    case 'drush:update':
-    case 'drush:dl':
-      $help .= dt("--svnsync - automatically add new files to the Subversion repository and
-remove deleted files. Use this with caution, especially if you leave files in
-project directories that you don't want to be marked for addition, or you
-have deleted a non-project file that you don't want to be marked in svn as a
-deletion.\n
---svncommit - automatically commit project install or update changes to the
-sites Subversion repository. You can only use this option if you are also
-using the --svnsync option, because committing without first adding new and
-removing deleted files will cause unpredictable results.\n
---svnmessage - Override the commit message from the default, which is:
-'Drush automatic commit: ', and the drush command line used.\n
---svnstatusparams - add options to the 'svn status' command
---svnaddparams - add options to the 'svn add' command
---svnremoveparams - add options to the 'svn remove' command
---svncommitparams - add options to the 'svn commit' command
-e.g. --svncommitparams=\"--username joe\" (note that quotes are required) will
-commit changes as the user 'joe'.\n");
-      return $help;
-  }
-}
 
 /**
  * Implementation of hook_drush_pm_skip_backup().

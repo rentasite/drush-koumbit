@@ -1,24 +1,12 @@
 <?php
-// $Id: wget.inc,v 1.1 2009/04/08 01:16:44 grugnog Exp $
+// $Id: wget.inc,v 1.2 2009/04/14 02:46:19 weitzman Exp $
 
 /**
  * @file Drush PM Wget extension
  */
 
 /**
- * Implementation of hook_drush_help().
- * TODO: Move help to an engine parameter.
- */
-function package_handler_help($section) {
-  switch ($section) {
-    case 'drush:pm install':
-    case 'drush:pm update':
-      return dt("Note: the wget handler will use the curl command if wget is not found\n");
-  }
-}
-
-/**
- * Install a project (so far, only modules are supported).
+ * Install a project.
  *
  * @param $project The short name of the drupal.org project
  * @param $info The details (fetched from drupal.org via xml-rpc)
