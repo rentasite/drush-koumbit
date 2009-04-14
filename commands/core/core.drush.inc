@@ -1,9 +1,9 @@
 <?php
-// $Id: core.drush.inc,v 1.12 2009/04/14 06:16:35 adrian Exp $
+// $Id: core.drush.inc,v 1.13 2009/04/14 16:56:59 weitzman Exp $
 
 /**
  * @file
- *   Core drush commands. See 'Drush Extras' project on drupal.org for more.
+ *   Core drush commands.
  */
 
 /**
