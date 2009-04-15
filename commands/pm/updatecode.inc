@@ -1,5 +1,5 @@
 <?php
-// $Id: updatecode.inc,v 1.1 2009/04/14 21:30:29 grugnog Exp $
+// $Id: updatecode.inc,v 1.2 2009/04/15 01:41:57 weitzman Exp $
 
 /**
  * Command callback. Displays update status info and allows to update installed modules.
@@ -118,9 +118,9 @@ function pm_update_packages($releases) {
     $skip_backup = version_control_skip_backup($source);
     if (!count($skip_backup)) {
       $backup_dir = $drupal_root  . '/backup';
-      drush_op('mkdir', $backup_dir, 0777);
+      @drush_op('mkdir', $backup_dir, 0777);
       $backup_dir .= '/modules';
-      drush_op('mkdir', $backup_dir, 0777);
+      @drush_op('mkdir', $backup_dir, 0777);
       $backup_dir .= "/$date";
       drush_op('mkdir', $backup_dir, 0777);
       $backup_target = $backup_dir . '/'. $release['name'];
@@ -154,5 +154,5 @@ function pm_update_packages($releases) {
   if ($backup_dir) {
     drush_log(dt("Backups were saved into the directory !backup_dir.", array('!backup_dir' => $backup_dir)), 'ok');
   }
-  drush_print(dt("You should now run update.php through your browser."));
+  drush_print(dt("You should now run `drush updatedb`."));
 }
