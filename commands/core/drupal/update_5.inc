@@ -1,5 +1,5 @@
 <?php
-// $Id: update_5.inc,v 1.1 2009/04/14 06:16:36 adrian Exp $
+// $Id: update_5.inc,v 1.2 2009/04/15 23:39:18 grugnog Exp $
 
 /**
  * @file
@@ -65,7 +65,7 @@ function update_main() {
       }
     }
     else {
-      drush_log(dt('No updates for @module module', array('@module' => $module)), 'success');
+      drush_log(dt('No database updates for @module module', array('@module' => $module)), 'success');
     }
   }
 }

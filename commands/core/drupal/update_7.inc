@@ -1,5 +1,5 @@
 <?php
-// $Id: update_7.inc,v 1.2 2009/04/14 22:39:41 adrian Exp $
+// $Id: update_7.inc,v 1.3 2009/04/15 23:39:18 grugnog Exp $
 /**
  * @file
  *   Update.php for provisioned sites.
@@ -493,7 +493,7 @@ function update_main() {
         }
       }
       else {
-        drush_log(dt('No updates for module @module', array('@module' => $module)), 'success');
+        drush_log(dt('No database updates for module @module', array('@module' => $module)), 'success');
       }
     }
     $batch = array(
@@ -509,7 +509,7 @@ function update_main() {
     batch_process();
   }
   else {
-    drush_log(dt('No outstanding updates'));
+    drush_log(dt('No outstanding database updates'));
   }
 }
 
