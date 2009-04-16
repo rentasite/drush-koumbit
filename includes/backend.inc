@@ -1,5 +1,5 @@
 <?php
-// $Id: backend.inc,v 1.9 2009/04/16 01:44:37 adrian Exp $
+// $Id: backend.inc,v 1.10 2009/04/16 02:25:52 adrian Exp $
 
 /**
  * @file Drush backend API
@@ -44,7 +44,7 @@
  * POST parameters will be passed to the script as a JSON encoded associative array over STDIN.
  *
  * Because of this standard interface, Drush commands can also be executed on
- * external servers through SSH pipes, simply by appending, 'ssh username@server.com'
+ * external servers through SSH pipes, simply by prepending, 'ssh username@server.com'
  * in front of the command.
  *
  * If the key-based ssh authentication has been set up between the servers, this will just
