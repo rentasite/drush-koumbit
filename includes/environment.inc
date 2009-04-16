@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.17 2009/04/16 01:29:50 adrian Exp $
+// $Id: environment.inc,v 1.18 2009/04/16 02:35:43 weitzman Exp $
 
 /**
  * @file
@@ -479,8 +479,8 @@ function _drush_bootstrap_drupal_configuration() {
        }
        break;
      case 7:
-       if (isset($GLOBALS['databases']['default'])) {
-         $conn = $GLOBALS['databases']['default'];
+       if (isset($GLOBALS['databases']['default']['default'])) {
+         $conn = $GLOBALS['databases']['default']['default'];
          $creds['driver'] = $conn['driver'];
          $creds['user'] = $conn['username'];
          $creds['host'] = $conn['host'];
