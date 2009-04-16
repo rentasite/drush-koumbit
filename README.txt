@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.19 2009/04/15 01:13:45 weitzman Exp $
+// $Id: README.txt,v 1.20 2009/04/16 03:10:00 weitzman Exp $
 
 DESCRIPTION
 -----------
@@ -111,12 +111,6 @@ FAQ
 ---
   Q: What does "drush" stand for?
   A: The Drupal Shell.
-
-LIMITATIONS
------------
-* Due to reliance on PHP's tokenizer, drush may not work well in situations
-  where the PHP code for the Drupal code base is encrypted (refer to API.txt
-  for more information). This is unlikely to change.
 
 CREDITS
 -------
