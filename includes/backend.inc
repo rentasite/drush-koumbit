@@ -1,5 +1,5 @@
 <?php
-// $Id: backend.inc,v 1.8 2009/04/15 20:55:16 adrian Exp $
+// $Id: backend.inc,v 1.9 2009/04/16 01:44:37 adrian Exp $
 
 /**
  * @file Drush backend API
@@ -286,9 +286,7 @@ function _drush_backend_generate_command($command, &$data, $method = 'GET', $dru
 
   $drush_path = !is_null($drush_path) ? $drush_path : $_SERVER['argv'][0]; // Call own drush.php file.
   $data['root'] = ($data['root']) ? $data['root'] : drush_get_context('DRUSH_DRUPAL_ROOT');
-  if (!is_null($data['uri'])) {
-    $data['uri'] = ($data['uri']) ? $data['uri'] : drush_get_context('DRUSH_URI');
-  }
+  $data['uri'] = array_key_exists('uri', $data) ? $data['uri'] : drush_get_context('DRUSH_URI');
 
   $option_str = _drush_backend_argument_string($data, $method);
   $args = explode(" ", $command);
