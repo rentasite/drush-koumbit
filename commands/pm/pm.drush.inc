@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.19 2009/04/15 23:52:35 grugnog Exp $
+// $Id: pm.drush.inc,v 1.20 2009/04/16 00:30:55 grugnog Exp $
 
 /**
  * @file
@@ -308,7 +308,7 @@ function pm_dependencies(&$modules, $form) {
       drush_set_error('DRUSH_PM_ENABLE_MODULE_NOT FOUND', dt('Module !module was not found and will not be enabled.', array('!module' => $module)));
     }
   }
-  $modules = array_merge($modules, $dependencies);
+  $modules = array_unique(array_merge($modules, $dependencies));
 }
 
 /**
