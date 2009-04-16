@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-// $Id: drush.php,v 1.58 2009/04/14 04:49:01 adrian Exp $
+// $Id: drush.php,v 1.59 2009/04/16 00:37:38 weitzman Exp $
 
 /**
  * @file
@@ -37,11 +37,7 @@ exit(drush_main());
  *   and false if being run through cgi or mod_php.
  */
 function drush_verify_cli() {
-  if (php_sapi_name() == 'cgi') {
-    return (is_numeric($_SERVER['argc']) && $_SERVER['argc'] > 0);
-  }
-
-  return (php_sapi_name() == 'cli');
+  return (php_sapi_name() == 'cli' || (is_numeric($_SERVER['argc']) && $_SERVER['argc'] > 0));
 }
 
 /**
