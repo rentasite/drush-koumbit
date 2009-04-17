@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.20 2009/04/16 00:30:55 grugnog Exp $
+// $Id: pm.drush.inc,v 1.21 2009/04/17 18:18:16 weitzman Exp $
 
 /**
  * @file
@@ -31,7 +31,7 @@ define('DRUSH_PM_NO_VERSION', 103);
 /**
  * User requested version not found.
  */
-define('DRUSH_PM_NO_VERSION', 104);
+define('DRUSH_PM_NOT_FOUND', 104);
 
 /**
  * Implementation of hook_drush_help().

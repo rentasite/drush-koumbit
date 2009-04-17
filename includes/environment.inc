@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.18 2009/04/16 02:35:43 weitzman Exp $
+// $Id: environment.inc,v 1.19 2009/04/17 18:18:17 weitzman Exp $
 
 /**
  * @file
@@ -413,6 +413,11 @@ function _drush_bootstrap_drupal_site_validate() {
   // Fake the necessary HTTP headers that Drupal needs:
   if ($drush_uri) {
     $drupal_base_url = parse_url($drush_uri);
+    // Fill in defaults.
+    $drupal_base_url += array(
+      'path' => NULL,
+      'host' => NULL,
+    );
     $_SERVER['HTTP_HOST'] = $drupal_base_url['host'];
     $_SERVER['PHP_SELF'] = $drupal_base_url['path'] . '/index.php';
   }

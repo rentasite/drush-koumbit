@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.18 2009/04/16 01:16:13 weitzman Exp $
+// $Id: core.drush.inc,v 1.19 2009/04/17 18:18:15 weitzman Exp $
 
 /**
  * @file
@@ -196,6 +196,8 @@ function core_drush_help($section) {
       return dt("Show recent watchdog messages.");
     case 'drush:watchdog delete':
       return dt("Delete watchdog messages.");
+    case 'drush:updatedb':
+      return dt("Run update.php just as a web browser would.");
     case 'drush:sync':
       return dt("Sync the entire drupal directory or a subdirectory to a <destination> using ssh. Excludes .svn directories. Useful for pushing copies of your tree to a staging server, or retrieving a files directory from a remote site. Local paths should be specified relative to Drupal root.");
     case 'drush:eval':
