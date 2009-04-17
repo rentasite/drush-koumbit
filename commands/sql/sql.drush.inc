@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.7 2009/04/15 04:22:14 weitzman Exp $
+// $Id: sql.drush.inc,v 1.8 2009/04/17 18:26:59 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -287,7 +287,16 @@ function _drush_sql_get_db_spec() {
       $url = $GLOBALS['db_url'];
       // TODO: array version not working?
       $url =  is_array($url) ? $url[$database] : $url;
-      $url = (object)parse_url($url);
+      $url = parse_url($url);
+      // Fill in defaults to prevent notices.
+      $url += array(
+        'driver' => NULL,
+        'username' => NULL,
+        'password' => NULL,
+        'port' => NULL,
+        'database' => NULL,
+      );
+      $url = (object)$url;
       return array(
         'driver' => $url->scheme == 'mysqli' ? 'mysql' : $url->scheme,
         'username' => urldecode($url->user),
