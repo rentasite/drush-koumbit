@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.19 2009/04/17 18:18:17 weitzman Exp $
+// $Id: environment.inc,v 1.20 2009/04/18 00:09:02 grugnog Exp $
 
 /**
  * @file
@@ -475,7 +475,11 @@ function _drush_bootstrap_drupal_configuration() {
      case 5:
      case 6:
        if (isset($GLOBALS['db_url'])) {
-         $parts = parse_url($GLOBALS['db_url']);
+         $url = $GLOBALS['db_url'];
+         if (is_array($url)) {
+           $url = $url['default'];
+         }
+         $parts = parse_url($url);
          $creds['driver'] = $parts['scheme'];
          $creds['user'] = $parts['user'];
          $creds['host'] = $parts['host'];
