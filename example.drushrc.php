@@ -1,5 +1,5 @@
 <?php
-// $Id: example.drushrc.php,v 1.10 2009/04/17 17:49:07 weitzman Exp $
+// $Id: example.drushrc.php,v 1.11 2009/04/19 03:13:09 weitzman Exp $
 
 /*
  * Examples of valid statements for a drushrc.php file. Use this file to cut down on
@@ -40,11 +40,21 @@
 
 /*
  * Customize this associative array with your own tables. This is the 
- * list of tables that are omitted by the 'sql dump' and 'sql load' 
- * commands when a skip is requested. You may add new tables to the existing array or add a new 
+ * list of tables that are entirely omitted by the 'sql dump' and 'sql load' 
+ * commands when a skip-tables-key is provided. You may add new tables to the existing array or add a new 
  * element.
  */
 $options['skip-tables'] = array(
+ 'common' => array('accesslog', 'cache', 'cache_filter', 'cache_menu', 'cache_page', 'history', 'search_dataset', 'search_index', 'search_total', 'sessions', 'watchdog'),
+);
+
+/*
+ * Customize this associative array with your own tables. This is the 
+ * list of tables that whose *data* is skipped by the 'sql dump' and 'sql load' 
+ * commands when a structure-tables-key is provided. You may add new tables to the existing array or add a new 
+ * element.
+ */
+$options['structure-tables'] = array(
  'common' => array('accesslog', 'cache', 'cache_filter', 'cache_menu', 'cache_page', 'history', 'search_dataset', 'search_index', 'search_total', 'sessions', 'watchdog'),
 );
 
