@@ -1,5 +1,5 @@
 <?php
-// $Id: context.inc,v 1.5 2009/04/17 18:18:17 weitzman Exp $
+// $Id: context.inc,v 1.6 2009/04/19 04:05:52 weitzman Exp $
 /**
  * @file
  * The Drush context API implementation.
@@ -105,6 +105,10 @@ function drush_load_config($context) {
     drush_log(dt('Loading drushrc "!config" into "!context" scope.', array('!config' => realpath($config), '!context' => $context)), 'bootstrap');
     require_once($config);
     drush_set_context($context, $options);
+    
+    // Instruct core not to queries since we are not outputting them.
+    // This can be overridden by a command or a drushrc file if needed.
+    $conf['dev_query'] = FALSE;
 
     /**
      * Allow the drushrc.php file to override $conf settings.
