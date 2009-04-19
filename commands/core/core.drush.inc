@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.19 2009/04/17 18:18:15 weitzman Exp $
+// $Id: core.drush.inc,v 1.20 2009/04/19 03:13:02 weitzman Exp $
 
 /**
  * @file
@@ -114,6 +114,7 @@ function core_drush_engine_drupal() {
 function core_updatedb() {
   drush_include_engine('drupal', 'update', drush_drupal_major_version());
   update_main();
+  drush_log(dt('Finished performing updates.'), 'ok');
 }
 
 
