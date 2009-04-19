@@ -1,5 +1,5 @@
 <?php
-// $Id: svn.inc,v 1.2 2009/04/14 02:46:20 weitzman Exp $
+// $Id: svn.inc,v 1.3 2009/04/19 03:56:32 weitzman Exp $
 
 /**
  * @file Drush pm SVN extension
@@ -11,7 +11,7 @@
 function version_control_skip_backup($source) {
   if (file_exists($source. '/.svn')) {
     // Skip backup since we need all .svn  directories. Assuming admin can use svn revert if new project is bad.
-    drush_verbose(dt('Backup skipped because .svn directory was detected. Use Subversion to revert if needed.'));
+    drush_log(dt('Backup skipped because .svn directory was detected. Use Subversion to revert if needed.'));
     return TRUE;
   }
 }

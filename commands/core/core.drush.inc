@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.20 2009/04/19 03:13:02 weitzman Exp $
+// $Id: core.drush.inc,v 1.21 2009/04/19 03:56:31 weitzman Exp $
 
 /**
  * @file
@@ -340,7 +340,7 @@ function core_sync($source, $destination) {
 
   $options = '-az';
   $exec = "rsync -e ssh $options --exclude \"*.svn*\" $source $destination";
-  if (drush_get_context('DRUSH_VERBOSE')) {
+  if (drush_get_context('drush_log')) {
     // the drush_op() will be verbose about the command that gets executed.
     $options .= 'v';
   }
@@ -387,7 +387,7 @@ function core_watchdog_show($type = NULL) {
     return drush_set_error('CORE_WATCHDOG_SHOW_NONE', 'No log messages available.');
   }
   else {
-    drush_verbose(dt('Last !count watchdog log messages:', array('!count' => $limit)));
+    drush_log(dt('Last !count watchdog log messages:', array('!count' => $limit)));
 
     array_unshift($rows, array(dt('Date'), dt('Severity'), dt('Type'), dt('Message'), dt('User')));
     drush_print_table($rows, 2, TRUE);
