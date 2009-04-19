@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.9 2009/04/19 03:13:09 weitzman Exp $
+// $Id: sql.drush.inc,v 1.10 2009/04/19 05:59:33 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -178,7 +178,7 @@ function drush_sql_dump($db_spec = NULL) {
   if ($file = drush_get_option('result-file')) {
     $exec .= ' --result-file '. $file;
   }
-  $extra .= ' --single-transaction --opt -Q' . _drush_sql_get_credentials($db_spec);
+  $extra = ' --single-transaction --opt -Q' . _drush_sql_get_credentials($db_spec);
   $exec .= $extra;
   
   $skip_tables = $ignores = array();
