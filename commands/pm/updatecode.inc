@@ -1,5 +1,5 @@
 <?php
-// $Id: updatecode.inc,v 1.6 2009/04/18 01:29:32 grugnog Exp $
+// $Id: updatecode.inc,v 1.7 2009/04/20 11:56:28 weitzman Exp $
 
 /**
  * Command callback. Displays update status info and allows to update installed modules.
@@ -118,7 +118,7 @@ function pm_update_packages($releases) {
 
   // Now we start the actual updating.
   foreach($releases as $release) {
-    drush_verbose(dt('Starting to update !project code ...', array('!project' => $release['title'])));
+    drush_log(dt('Starting to update !project code ...', array('!project' => $release['title'])));
 
     $drupal_root = drush_get_context('DRUSH_DRUPAL_ROOT');
     
