@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.23 2009/04/19 19:51:55 weitzman Exp $
+// $Id: pm.drush.inc,v 1.24 2009/04/21 21:19:21 grugnog Exp $
 
 /**
  * @file
@@ -103,6 +103,7 @@ function pm_drush_command() {
     'description' => 'Show module enabled/disabled status',
     'callback' => 'pm_module_manage',
     'callback arguments' => array(array(), FALSE),
+    'core' => array(6),
   );
   $items['refresh'] = array(
     'description' => 'Refresh update status information',
