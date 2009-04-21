@@ -1,5 +1,5 @@
 <?php
-// $Id: backend.inc,v 1.10 2009/04/16 02:25:52 adrian Exp $
+// $Id: backend.inc,v 1.11 2009/04/21 16:55:55 adrian Exp $
 
 /**
  * @file Drush backend API
@@ -155,7 +155,7 @@ function _drush_proc_open($cmd, $data = NULL) {
   $descriptorspec = array(
      0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
      1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
-     2 => array("file", "/tmp/error-output.txt", "a") // stderr is a file to write to
+     2 => array("pipe", "w")   // stderr is a pipe the child will write to
   );
 
   $process = proc_open($cmd, $descriptorspec, $pipes, null, null, array('context' => $context));
