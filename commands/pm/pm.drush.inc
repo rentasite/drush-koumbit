@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.24 2009/04/21 21:19:21 grugnog Exp $
+// $Id: pm.drush.inc,v 1.25 2009/04/23 13:27:32 weitzman Exp $
 
 /**
  * @file
@@ -484,6 +484,9 @@ function pm_dl_destination($type) {
   }
   else if ($drupal_root) {
     $sitepath = $drupal_root . '/sites/all/';
+  }
+  else {
+    $sitepath = '';
   }
 
   switch ($type) {
