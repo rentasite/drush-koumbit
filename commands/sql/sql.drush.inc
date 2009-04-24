@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.14 2009/04/24 04:54:16 weitzman Exp $
+// $Id: sql.drush.inc,v 1.15 2009/04/24 11:47:06 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -425,7 +425,7 @@ function _drush_sql_get_credentials($db_spec = NULL) {
       // $cred .= '-U ' . $db_spec['username'] . ' ';
       break;
   }
-  return $cred;
+  return escapeshellcmd($cred);
 }
 
 function _drush_sql_get_invalid_url_msg($db_spec = NULL) {
