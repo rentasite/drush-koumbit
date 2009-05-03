@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.26 2009/04/26 23:03:57 grugnog Exp $
+// $Id: pm.drush.inc,v 1.27 2009/05/03 02:46:08 weitzman Exp $
 
 /**
  * @file
@@ -479,7 +479,7 @@ function pm_dl_destination($type) {
 
   // If a URI is provided and we bootstrapped successfully then we install to
   // that specific site, otherwise we install to sites/all/modules
-  if ($site_root) {
+  if ($site_root && $site_root !== 'sites/default') {
     $sitepath = $drupal_root .'/'. $site_root .'/';
   }
   else if ($drupal_root) {
