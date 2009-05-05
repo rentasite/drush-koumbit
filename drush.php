@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-// $Id: drush.php,v 1.61 2009/05/03 03:45:34 weitzman Exp $
+// $Id: drush.php,v 1.62 2009/05/05 20:06:54 weitzman Exp $
 
 /**
  * @file
@@ -16,6 +16,7 @@ if (!drush_verify_cli()) {
 
 define('DRUSH_BASE_PATH', dirname(__FILE__));
 define('DRUSH_COMMAND', $GLOBALS['argv'][0]);
+define('DRUSH_REQUEST_TIME', microtime(TRUE));
 
 require_once DRUSH_BASE_PATH . '/includes/environment.inc';
 require_once DRUSH_BASE_PATH . '/includes/command.inc';
