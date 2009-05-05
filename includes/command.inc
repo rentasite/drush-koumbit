@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.28 2009/05/03 03:45:35 weitzman Exp $
+// $Id: command.inc,v 1.29 2009/05/05 19:19:52 weitzman Exp $
 
 /**
  * @file
@@ -382,6 +382,13 @@ function _drush_find_commandfiles($phase) {
       if (!empty($_SERVER['HOME'])) {
         $searchpath[] = $_SERVER['HOME'] . '/.drush';
       }
+      break;
+    case DRUSH_BOOTSTRAP_DRUPAL_SITE:
+      // Add all module paths, even disabled modules. Prefer speed over accuracy.
+      $searchpath[] = 'sites/all/modules';
+      $searchpath[] = conf_path() . '/modules';
+      // Too early for variable_get('install_profile', 'default'); Just use default.
+      $searchpath[] = "profiles/default/modules";
       break;
     case DRUSH_BOOTSTRAP_DRUPAL_FULL :
      // Add enabled module paths. Since we are bootstrapped,

@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.23 2009/05/03 03:45:34 weitzman Exp $
+// $Id: core.drush.inc,v 1.24 2009/05/05 19:19:52 weitzman Exp $
 
 /**
  * @file
@@ -126,7 +126,9 @@ function core_help() {
   
   if (empty($commands)) {
     drush_show_help(array('help'));
-    $phases = _drush_bootstrap_phases(); 
+    $phases = _drush_bootstrap_phases();
+    // For speed, only bootstrap up to DRUSH_BOOTSTRAP_DRUPAL_SITE.
+    $phases = array_slice($phases, 0, DRUSH_BOOTSTRAP_DRUPAL_SITE+1);
     drush_print(dt('Commands: '));
 
     $printed_rows = array();
@@ -150,7 +152,7 @@ function core_help() {
         
         $rows = array();
         foreach($commands as $key => $command) {
-          if (!array_key_exists($key, $printed_rows) && empty($commands[$key]['bootstrap_errors'])) {
+          if (!array_key_exists($key, $printed_rows)) {
             $rows[$key] = array(sprintf("%-20s", $key), $commands[$key]['description']);
           }
         }
