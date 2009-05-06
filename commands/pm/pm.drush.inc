@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.29 2009/05/06 19:35:59 weitzman Exp $
+// $Id: pm.drush.inc,v 1.30 2009/05/06 21:29:01 weitzman Exp $
 
 /**
  * @file
@@ -105,7 +105,7 @@ function pm_drush_command() {
     'callback arguments' => array(array(), FALSE),
     'core' => array(6),
     'options' => array(
-      'pipe' => 'Returns a space delimited list of enabled modules.',
+      '--pipe' => 'Returns a space delimited list of enabled modules.',
     ),
   );
   $items['refresh'] = array(
