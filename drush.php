@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-// $Id: drush.php,v 1.62 2009/05/05 20:06:54 weitzman Exp $
+// $Id: drush.php,v 1.63 2009/05/06 16:29:22 adrian Exp $
 
 /**
  * @file
@@ -119,6 +119,9 @@ function drush_shutdown() {
 
   if (drush_get_context('DRUSH_BACKEND')) {
     drush_backend_output();
+  }
+  elseif (drush_get_context('DRUSH_QUIET')) {
+    ob_end_clean();
   }
 
   exit((drush_get_error()) ? DRUSH_FRAMEWORK_ERROR : DRUSH_SUCCESS);
