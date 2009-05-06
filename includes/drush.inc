@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.31 2009/05/05 20:06:55 weitzman Exp $
+// $Id: drush.inc,v 1.32 2009/05/06 00:51:20 weitzman Exp $
 
 /**
  * @file
@@ -27,6 +27,9 @@ function drush_dispatch($command = NULL) {
   if ($return === TRUE) {
     $return = '';
   }
+  
+  // Add a final log entry, just so a timestamp appears.
+  drush_log(dt('Command dispatch complete'), 'notice');
 
   return $return;
 }
