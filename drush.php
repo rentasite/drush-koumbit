@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-// $Id: drush.php,v 1.63 2009/05/06 16:29:22 adrian Exp $
+// $Id: drush.php,v 1.64 2009/05/06 19:35:59 weitzman Exp $
 
 /**
  * @file
@@ -123,7 +123,12 @@ function drush_shutdown() {
   elseif (drush_get_context('DRUSH_QUIET')) {
     ob_end_clean();
   }
-
+  
+  // If we are in pipe mode, emit the compact representation of the command, if available.
+  if (drush_get_context('DRUSH_PIPE')) {
+    drush_pipe_output();
+  }
+  
   exit((drush_get_error()) ? DRUSH_FRAMEWORK_ERROR : DRUSH_SUCCESS);
 }
 

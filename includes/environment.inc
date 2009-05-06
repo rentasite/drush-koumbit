@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.25 2009/05/05 19:19:52 weitzman Exp $
+// $Id: environment.inc,v 1.26 2009/05/06 19:35:59 weitzman Exp $
 
 /**
  * @file
@@ -327,7 +327,11 @@ function _drush_bootstrap_drush() {
       drush_set_context('stdin', $stdin_options);
     }
   }
-  $quiet = drush_set_context('DRUSH_QUIET', drush_get_option(array('q', 'quiet')));
+  
+  // Pipe implies quiet.
+  $quiet = drush_set_context('DRUSH_QUIET', drush_get_option(array('q', 'quiet', 'p', 'pipe')));
+  
+  drush_set_context('DRUSH_PIPE', drush_get_option(array('p', 'pipe')));
 
   // When running in backend mode, all output is buffered, and returned
   // as a property of a JSON encoded associative array.
