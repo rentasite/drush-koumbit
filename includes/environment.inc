@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.26 2009/05/06 19:35:59 weitzman Exp $
+// $Id: environment.inc,v 1.27 2009/05/07 22:18:26 adrian Exp $
 
 /**
  * @file
@@ -340,7 +340,9 @@ function _drush_bootstrap_drush() {
   }
 
   drush_set_context('DRUSH_VERBOSE',     drush_get_option(array('v', 'verbose'), FALSE));
-  drush_set_context('DRUSH_AFFIRMATIVE', drush_get_option(array('y', 'yes'), FALSE));
+
+  // Backend implies affirmative
+  drush_set_context('DRUSH_AFFIRMATIVE', drush_get_option(array('y', 'yes', 'b', 'backend'), FALSE));
   drush_set_context('DRUSH_SIMULATE',    drush_get_option(array('s', 'simulate'), FALSE));
 
   // Find any command files that are available during this bootstrap phase.
