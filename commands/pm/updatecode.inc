@@ -1,5 +1,5 @@
 <?php
-// $Id: updatecode.inc,v 1.8 2009/04/28 20:41:01 grugnog Exp $
+// $Id: updatecode.inc,v 1.9 2009/05/07 21:56:20 adrian Exp $
 
 /**
  * Command callback. Displays update status info and allows to update installed modules.
@@ -8,7 +8,7 @@
  * This command prompts for confirmation before updating, so it is safe to run just to check on
  * In this case, say at the confirmation prompt.
  */
-function pm_updatecode() {
+function drush_pm_updatecode() {
   // We don't provide for other options here, so we supply an explicit path.
   drush_include_engine('update_info', 'drupal', NULL, DRUSH_BASE_PATH . '/commands/pm/update_info');
   

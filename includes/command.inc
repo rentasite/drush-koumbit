@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.29 2009/05/05 19:19:52 weitzman Exp $
+// $Id: command.inc,v 1.30 2009/05/07 21:56:20 adrian Exp $
 
 /**
  * @file
@@ -203,15 +203,19 @@ function drush_invoke($command) {
 
 
   $hook = str_replace(" ", "_", $command);
+  $list = drush_commandfile_list();
+
   $functions = array();
   // First we build a list of functions are about to execute
   $variations = array($hook . "_validate", "pre_$hook", $hook, "post_$hook");
   foreach ($variations as $var_hook) {
-    foreach (drush_command_implements($var_hook) as $name) {
-      $functions[] = $name . '_' . $var_hook;
+    foreach ($list as $commandfile => $filename) {
+      $func = sprintf("drush_%s_%s", $commandfile, $var_hook);
+      if (function_exists($func)) {
+        $functions[] = $func;
+      }
     }
   }
-
   $rollback = FALSE;
   $completed = array();
   foreach ($functions as $func) {
