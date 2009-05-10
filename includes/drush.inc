@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.33 2009/05/06 19:35:59 weitzman Exp $
+// $Id: drush.inc,v 1.34 2009/05/10 18:21:47 adrian Exp $
 
 /**
  * @file
@@ -669,16 +669,24 @@ function _drush_print_log($entry) {
   if (drush_get_context('DRUSH_BACKEND')) {
     return $return;
   }
-  
+
+  $columns = drush_get_context('DRUSH_COLUMNS', 80);
+
+  $width[1] = 11;
   // Append timer value.
   if ($log_level >= 1) {
-    $entry['message'] .= ' [' . round($entry['timestamp']-DRUSH_REQUEST_TIME, 4) . ' sec]';
+    $timer = sprintf('[%s sec]', round($entry['timestamp']-DRUSH_REQUEST_TIME, 4));
+    $entry['message'] = $entry['message'] . ' ' . $timer;
   }
-  
+
+  $width[0] = ($columns - 11);
+
+  $format = sprintf("%%-%ds%%%ds", $width[0], $width[1]); 
+
   // Place the status message right aligned with the top line of the error message.
-  $message = wordwrap($entry['message'], 128);
+  $message = wordwrap($entry['message'], $width[0]);
   $lines = explode("\n", $message);
-  $lines[0] = sprintf("%-128s%7s", $lines[0], $type_msg);
+  $lines[0] = sprintf($format, $lines[0], $type_msg);
   $message = implode("\n", $lines);
   drush_print($message);
   return $return;

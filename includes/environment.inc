@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.27 2009/05/07 22:18:26 adrian Exp $
+// $Id: environment.inc,v 1.28 2009/05/10 18:21:47 adrian Exp $
 
 /**
  * @file
@@ -305,6 +305,13 @@ function drush_bootstrap_value($context, $value = null) {
 function _drush_bootstrap_drush() {
   // The bootstrap can fail silently, so we catch that in a shutdown function.
   register_shutdown_function('drush_shutdown');
+
+  // Attempt to set the screen width to the current screen width.
+  // This will only work if the user has exported COLUMNS in his session.
+  if (!($columns = getenv('COLUMNS'))) {
+    $columns = 80;
+  }
+  drush_set_context('DRUSH_COLUMNS', $columns);
 
   // parse the command line arguments.
   drush_parse_args();

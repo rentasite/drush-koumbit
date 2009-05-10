@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.20 2009/04/16 03:10:00 weitzman Exp $
+// $Id: README.txt,v 1.21 2009/05/10 18:21:47 adrian Exp $
 
 DESCRIPTION
 -----------
@@ -24,6 +24,9 @@ For Linux/Unix/Mac:
      - create an alias to drush.php:
        $ alias drush='php /path/to/drush/drush.php'
        (this goes into .profile or .bash_aliases in your home folder)
+     ALSO
+     - To allow Drush to detect the number of available columns, you need to add the
+       line 'export COLUMNS' to the the .profile file in your home folder.
 
   3. Start using drush by running "drush" from your Drupal root directory.
 
