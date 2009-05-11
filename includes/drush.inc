@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.34 2009/05/10 18:21:47 adrian Exp $
+// $Id: drush.inc,v 1.35 2009/05/11 13:16:42 weitzman Exp $
 
 /**
  * @file
@@ -289,7 +289,7 @@ function drush_get_option_help() {
   // TODO: Add a hook for this, to allow other modules to add their options
   $options['-r <path>, --root=<path>'] = dt("Drupal root directory to use (default: current directory)");
   $options['-l <uri> , --uri=<uri>']   = dt('URI of the drupal site to use (only needed in multisite environments)');
-  $options['-v, --verbose']            = dt('Display all available output');
+  $options['-v, --verbose']            = dt('Display debug messages. Use a value of 1 to see some messages, or 2 for all.');
   $options['-q, --quiet']              = dt('Hide all output');
   $options['-y, --yes']                = dt("Assume 'yes' as answer to all prompts");
   $options['-s, --simulate']           = dt("Simulate all relevant actions (don't actually change the system)");
