@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.36 2009/05/11 14:43:34 weitzman Exp $
+// $Id: drush.inc,v 1.37 2009/05/11 15:20:16 weitzman Exp $
 
 /**
  * @file
@@ -677,7 +677,7 @@ function _drush_print_log($entry) {
   $width[1] = 11;
   // Append timer value.
   if ($debug) {
-    $timer = sprintf('[%s sec]', round($entry['timestamp']-DRUSH_REQUEST_TIME, 4));
+    $timer = sprintf('[%s sec]', round($entry['timestamp']-DRUSH_REQUEST_TIME, 3));
     $entry['message'] = $entry['message'] . ' ' . $timer;
   }
 
