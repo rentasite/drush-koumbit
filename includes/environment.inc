@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.28 2009/05/10 18:21:47 adrian Exp $
+// $Id: environment.inc,v 1.29 2009/05/11 14:43:34 weitzman Exp $
 
 /**
  * @file
@@ -346,7 +346,10 @@ function _drush_bootstrap_drush() {
     ob_start();
   }
 
-  drush_set_context('DRUSH_VERBOSE',     drush_get_option(array('v', 'verbose'), FALSE));
+  // Debug implies verbose
+  drush_set_context('DRUSH_VERBOSE',     drush_get_option(array('v', 'verbose', 'd', 'debug'), FALSE));
+  drush_set_context('DRUSH_DEBUG', drush_get_option(array('d', 'debug')));
+  
 
   // Backend implies affirmative
   drush_set_context('DRUSH_AFFIRMATIVE', drush_get_option(array('y', 'yes', 'b', 'backend'), FALSE));

@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.30 2009/05/07 21:56:20 adrian Exp $
+// $Id: command.inc,v 1.31 2009/05/11 14:43:34 weitzman Exp $
 
 /**
  * @file
@@ -20,7 +20,7 @@
 function drush_parse_args() {
   $args = drush_get_context('argv');
 
-  static $arg_opts = array('c', 'h', 'u', 'r', 'l', 'i', 'v');
+  static $arg_opts = array('c', 'h', 'u', 'r', 'l', 'i');
 
   $arguments = $options = array();
 
