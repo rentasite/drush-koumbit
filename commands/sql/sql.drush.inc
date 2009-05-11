@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.16 2009/05/11 13:01:18 weitzman Exp $
+// $Id: sql.drush.inc,v 1.17 2009/05/11 20:53:10 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -198,7 +198,7 @@ function drush_sql_dump($db_spec = NULL) {
         $db_spec = _drush_sql_get_db_spec();
       }
 
-      $exec = 'pg_dump --clean ' . (drush_get_context('DRUSH_VERBOSE') ? '' : ' -q');
+      $exec = 'pg_dump --clean ' . (drush_get_context('DRUSH_VERBOSE') ? ' -v' : '');
       if ($file = drush_get_option('result-file')) {
         $exec .= ' --file '. $file;
       }
