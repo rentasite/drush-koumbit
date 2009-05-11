@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.29 2009/05/11 14:43:34 weitzman Exp $
+// $Id: environment.inc,v 1.30 2009/05/11 15:13:55 weitzman Exp $
 
 /**
  * @file
@@ -579,7 +579,8 @@ function _drush_bootstrap_drupal_login() {
 function drush_cwd() {
   // We use PWD if available because getcwd() resolves symlinks, which
   // could take us outside of the Drupal root, making it impossible to find.
-  $path = $_SERVER['PWD'];
+  // $_SERVER['PWD'] isn't set on windows and generates a Notice.
+  $path = isset($_SERVER['PWD'])?$_SERVER['PWD']:'';
   if (empty($path)) {
     $path = getcwd();
   }

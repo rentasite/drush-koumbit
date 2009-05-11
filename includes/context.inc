@@ -1,5 +1,5 @@
 <?php
-// $Id: context.inc,v 1.6 2009/04/19 04:05:52 weitzman Exp $
+// $Id: context.inc,v 1.7 2009/05/11 15:13:55 weitzman Exp $
 /**
  * @file
  * The Drush context API implementation.
@@ -84,7 +84,14 @@ function _drush_config_file($context) {
   }
 
   // in the user home directory
-  $configs['user'] = $_SERVER['HOME'] . '/.drushrc.php';
+  // $_SERVER['HOME'] isn't set on windows and generates a Notice.
+  if(isset($_SERVER['HOME'])){
+    $configs['user'] = $_SERVER['HOME'] . '/.drushrc.php';
+  }
+  else{
+    // home on windows
+    $configs['user'] = $_SERVER['HOMEDRIVE'] . $_SERVER['HOMEPATH'] . '/.drushrc.php';
+  }
 
   // in the drush installation folder
   // TODO: This really should be a proper, system-wide location.
