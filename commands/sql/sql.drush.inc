@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.15 2009/04/24 11:47:06 weitzman Exp $
+// $Id: sql.drush.inc,v 1.16 2009/05/11 13:01:18 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -346,8 +346,8 @@ function _drush_sql_get_db_spec() {
       // Fill in defaults to prevent notices.
       $url += array(
         'driver' => NULL,
-        'username' => NULL,
-        'password' => NULL,
+        'user' => NULL,
+        'pass' => NULL,
         'port' => NULL,
         'database' => NULL,
       );
