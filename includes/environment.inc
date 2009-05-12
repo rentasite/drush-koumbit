@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.30 2009/05/11 15:13:55 weitzman Exp $
+// $Id: environment.inc,v 1.31 2009/05/12 00:17:24 weitzman Exp $
 
 /**
  * @file
@@ -719,7 +719,7 @@ function drush_valid_db_credentials() {
     }
 
     $constr = sprintf("%s:dbname=%s;host=%s", $type, $creds['name'], $creds['host']);
-    if (isset($creds['port'])) {
+    if (!empty($creds['port'])) {
       $constr .= sprintf(";port=%d", $creds['port']);
     }
 
