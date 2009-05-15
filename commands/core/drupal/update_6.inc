@@ -1,5 +1,5 @@
 <?php
-// $Id: update_6.inc,v 1.4 2009/05/07 01:37:48 weitzman Exp $
+// $Id: update_6.inc,v 1.5 2009/05/15 19:02:20 weitzman Exp $
 /**
  * @file
  *   Update.php for provisioned sites.
@@ -302,6 +302,13 @@ function update_main() {
 
 
   drush_bootstrap(DRUSH_BOOTSTRAP_DRUPAL_FULL);
+  
+  // Updates only run reliably if user ID #1 is logged in. For example, node_delete() requires elevated perms in D5/6.
+  if (!drush_get_context('DRUSH_USER')) {
+    drush_set_option('user', 1);
+    drush_bootstrap(DRUSH_BOOTSTRAP_DRUPAL_LOGIN);
+  }
+  
   drupal_maintenance_theme();
 
   // This must happen *after* drupal_bootstrap(), since it calls

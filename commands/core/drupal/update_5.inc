@@ -1,5 +1,5 @@
 <?php
-// $Id: update_5.inc,v 1.3 2009/05/07 01:37:48 weitzman Exp $
+// $Id: update_5.inc,v 1.4 2009/05/15 19:02:20 weitzman Exp $
 
 /**
  * @file
@@ -15,6 +15,12 @@ include_once("update.php");
 ob_end_clean();
 
 function update_main() {
+  // Updates only run reliably if user ID #1 is logged in. For example, node_delete() requires elevated perms in D5/6.
+  if (!drush_get_context('DRUSH_USER')) {
+    drush_set_option('user', 1);
+    drush_bootstrap(DRUSH_BOOTSTRAP_DRUPAL_LOGIN);
+  }
+  
   include_once './includes/install.inc';
   drupal_load_updates();
 
