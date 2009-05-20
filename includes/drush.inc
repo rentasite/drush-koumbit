@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.37 2009/05/11 15:20:16 weitzman Exp $
+// $Id: drush.inc,v 1.38 2009/05/20 19:23:58 adrian Exp $
 
 /**
  * @file
@@ -768,6 +768,10 @@ define('DRUSH_NOT_COMPLETED', 0);
 define('DRUSH_SUCCESS', 1);
 /** The command could not be completed because the framework has specified errors that have occured. */
 define('DRUSH_FRAMEWORK_ERROR', 2);
+/** The command that was executed resulted in an application error,
+  The most commom causes for this is invalid PHP or a broken SSH
+  pipe when using drush_backend_invoke in a distributed manner. */
+define('DRUSH_APPLICATION_ERROR', 255);
 
 /**
  * @} End of "name Error status defintions".

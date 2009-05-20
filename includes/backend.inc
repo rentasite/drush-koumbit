@@ -1,5 +1,5 @@
 <?php
-// $Id: backend.inc,v 1.12 2009/05/03 03:45:35 weitzman Exp $
+// $Id: backend.inc,v 1.13 2009/05/20 19:23:58 adrian Exp $
 
 /**
  * @file Drush backend API
@@ -124,7 +124,12 @@ function drush_backend_parse_output($string, $integrate = TRUE) {
  */
 function _drush_backend_integrate($data) {
   // Output will either be printed, or buffered to the drush_backend_output command.
-  print ($data['output']);
+  if (drush_cmp_error('DRUSH_APPLICATION_ERROR')) {
+    drush_set_error("DRUSH_APPLICATION_ERROR", dt("Output from failed command :\n !output", array('!output' => $data['output'])));
+  }
+  else {
+    print ($data['output']);
+  }
   if (is_array($data['log'])) {
     foreach($data['log'] as $log) {
       if (!is_null($log['error'])) {
@@ -240,6 +245,11 @@ function drush_backend_invoke($command, $data = array(), $method = 'GET', $integ
  */
 function _drush_backend_invoke($cmd, $data = null, $integrate = TRUE) {
   $proc = _drush_proc_open($cmd, $data);
+
+  if (($proc['code'] == DRUSH_APPLICATION_ERROR) && $integrate) {
+    drush_set_error('DRUSH_APPLICATION_ERROR', dt("The external command could not be executed due to an application error."));
+  }
+
   if ($proc['output']) {
     $values = drush_backend_parse_output($proc['output'], $integrate);
     if (is_array($values)) {
