@@ -1,5 +1,5 @@
 <?php
-// $Id: update_6.inc,v 1.5 2009/05/15 19:02:20 weitzman Exp $
+// $Id: update_6.inc,v 1.6 2009/05/20 21:12:37 weitzman Exp $
 /**
  * @file
  *   Update.php for provisioned sites.
@@ -236,7 +236,7 @@ function update_check_requirements() {
         if (isset($requirement['value']) && $requirement['value']) {
           $message .= ' (Currently using '. $requirement['title'] .' '. $requirement['value'] .')';
         }
-        drupal_log($message, 'warning');
+        drush_log($message, 'warning');
       }
     }
   }
