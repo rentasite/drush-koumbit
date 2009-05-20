@@ -1,5 +1,5 @@
 <?php
-// $Id: updatecode.inc,v 1.9 2009/05/07 21:56:20 adrian Exp $
+// $Id: updatecode.inc,v 1.10 2009/05/20 04:28:18 weitzman Exp $
 
 /**
  * Command callback. Displays update status info and allows to update installed modules.
@@ -174,7 +174,6 @@ function pm_update_packages($releases) {
   }
   // Clear the cache, since some modules could have moved around.
   drush_invoke("cache clear");
-  drush_print(dt("You should now run `drush updatedb` or visit update.php through your browser."));
 }
 
 function pm_project_filter(&$releases, &$rows) {
