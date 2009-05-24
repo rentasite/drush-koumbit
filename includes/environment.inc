@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.32 2009/05/21 05:54:45 grugnog Exp $
+// $Id: environment.inc,v 1.33 2009/05/24 18:42:09 adrian Exp $
 
 /**
  * @file
@@ -341,6 +341,9 @@ function _drush_bootstrap_drush() {
 
   // Load a drushrc.php file in the drush.php's directory.
   drush_load_config('drush');
+
+  // Load a drushrc.php file in the $ETC_PREFIX/etc/drush directory.
+  drush_load_config('system');
 
   // Load a drushrc.php file in the ~/.drush directory.
   drush_load_config('user');

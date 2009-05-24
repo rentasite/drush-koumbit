@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.31 2009/05/11 14:43:34 weitzman Exp $
+// $Id: command.inc,v 1.32 2009/05/24 18:42:09 adrian Exp $
 
 /**
  * @file
@@ -380,6 +380,13 @@ function _drush_find_commandfiles($phase) {
         foreach (explode(":", $include) as $path) {
           $searchpath[] = $path;
         }
+      }
+
+      // System commands, residing in $SHARE_PREFIX/share/drush/commands
+      $share_path = drush_get_context('SHARE_PREFIX', '/usr') . '/share/drush/commands';
+
+      if (is_dir($share_path)) {
+        $searchpath[] = $share_path;
       }
 
       // User commands, residing i ~/.drush
