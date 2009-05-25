@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.32 2009/05/24 18:42:09 adrian Exp $
+// $Id: command.inc,v 1.33 2009/05/25 14:33:33 adrian Exp $
 
 /**
  * @file
@@ -427,6 +427,7 @@ function _drush_find_commandfiles($phase) {
 
     if (sizeof($list)) {
       $cache = array_merge($cache, $list);
+      ksort($cache);
     }
   }
 }
