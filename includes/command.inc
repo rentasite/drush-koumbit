@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.33 2009/05/25 14:33:33 adrian Exp $
+// $Id: command.inc,v 1.34 2009/05/26 17:45:48 weitzman Exp $
 
 /**
  * @file
@@ -389,7 +389,7 @@ function _drush_find_commandfiles($phase) {
         $searchpath[] = $share_path;
       }
 
-      // User commands, residing i ~/.drush
+      // User commands, residing in ~/.drush
       if (!empty($_SERVER['HOME'])) {
         $searchpath[] = $_SERVER['HOME'] . '/.drush';
       }
