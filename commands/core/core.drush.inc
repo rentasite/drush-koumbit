@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.28 2009/05/27 00:40:59 grugnog Exp $
+// $Id: core.drush.inc,v 1.29 2009/05/27 01:01:17 grugnog Exp $
 
 /**
  * @file
@@ -229,8 +229,9 @@ function core_drush_help($section) {
 // TODO: consolidate with SQL commands?
 function _core_site_credentials() {
   $phase = drush_get_context('DRUSH_BOOTSTRAP_PHASE');
+  $credentials = sprintf("  %-18s: %s\n", 'PHP configuration', php_ini_loaded_file());
   if ($drupal_root = drush_get_context('DRUSH_DRUPAL_ROOT')) {
-    $credentials = sprintf("  %-18s: %s\n", 'Drupal Root', $drupal_root);
+    $credentials .= sprintf("  %-18s: %s\n", 'Drupal Root', $drupal_root);
     $credentials .= sprintf("  %-18s: %s\n", 'Drupal version', drush_drupal_version());
     if ($site_root = drush_get_context('DRUSH_DRUPAL_SITE_ROOT')) {
       $credentials .= sprintf("  %-18s: %s\n", 'Site Path', $site_root);
