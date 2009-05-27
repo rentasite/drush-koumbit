@@ -1,5 +1,5 @@
 <?php
-// $Id: update_6.inc,v 1.7 2009/05/26 23:35:58 adrian Exp $
+// $Id: update_6.inc,v 1.8 2009/05/27 00:40:59 grugnog Exp $
 /**
  * @file
  *   Update.php for provisioned sites.
@@ -383,7 +383,7 @@ function update_main() {
     foreach ($pending as $module => $updates) {
       if (sizeof($updates)) {
         array_unshift($updates, array($module . ' module'));
-        drush_print_table($updates, 0, TRUE);
+        drush_print_table($updates, TRUE);
         drush_print();
       }
     }

@@ -1,5 +1,5 @@
 <?php
-// $Id: update_5.inc,v 1.6 2009/05/26 17:40:10 adrian Exp $
+// $Id: update_5.inc,v 1.7 2009/05/27 00:40:59 grugnog Exp $
 
 /**
  * @file
@@ -75,7 +75,7 @@ function update_main() {
     foreach ($pending as $module => $updates) {
       if (sizeof($updates)) {
         array_unshift($updates, array($module . ' module'));
-        drush_print_table($updates, 0, TRUE);
+        drush_print_table($updates, TRUE);
         drush_print();
       }
     }

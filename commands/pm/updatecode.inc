@@ -1,5 +1,5 @@
 <?php
-// $Id: updatecode.inc,v 1.10 2009/05/20 04:28:18 weitzman Exp $
+// $Id: updatecode.inc,v 1.11 2009/05/27 00:40:59 grugnog Exp $
 
 /**
  * Command callback. Displays update status info and allows to update installed modules.
@@ -63,7 +63,7 @@ function drush_pm_updatecode() {
   drush_print(dt('Update information last refreshed: ') . ($last  ? format_date($last) : dt('Never')));
   drush_print();
   drush_print(dt("Update status information on all installed and enabled Drupal modules:"));
-  drush_print_table($rows, 2, TRUE);
+  drush_print_table($rows, TRUE);
   drush_print();
 
   // If specific project updates were requested then remove releases for all others

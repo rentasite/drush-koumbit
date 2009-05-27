@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.37 2009/05/27 00:29:08 grugnog Exp $
+// $Id: pm.drush.inc,v 1.38 2009/05/27 00:40:59 grugnog Exp $
 
 /**
  * @file
@@ -308,7 +308,7 @@ function pm_module_status($enabled, $module_info) {
     $info = $module_info[$module_name]->info;
     $rows[] = array($info['name'] . ' (' . $module_name . ')', $enabled, truncate_utf8($info['description'], 60, FALSE, TRUE));
   }
-  drush_print_table($rows, 2, TRUE);
+  drush_print_table($rows, TRUE);
   
   // Space delimited list for use by other scripts. Set the --pipe option.
   drush_print_pipe(implode(' ', $pipe));
@@ -434,7 +434,7 @@ function drush_pm_info() {
     return drush_set_error('DRUSH_PM_PROJECT_NOT_FOUND', dt('No information available.'));
   }
   else {
-    return drush_print_table($rows, FALSE, TRUE);
+    return drush_print_table($rows, TRUE);
   }
 }
 
