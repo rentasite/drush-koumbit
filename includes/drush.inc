@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.40 2009/05/27 00:40:59 grugnog Exp $
+// $Id: drush.inc,v 1.41 2009/05/27 00:47:38 grugnog Exp $
 
 /**
  * @file
@@ -328,7 +328,7 @@ function drush_show_help($commands) {
         }
         $help = drush_command_invoke_all('drush_help', 'drush:'. $commandstring);
         if (!empty($help)) {
-          drush_print(wordwrap(implode("\n", $help), 80));
+          drush_print(wordwrap(implode("\n", $help), drush_get_context('DRUSH_COLUMNS', 80)));
           drush_print();
           
           // TODO: Let commands define additional sections.
