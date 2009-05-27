@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.35 2009/05/26 22:30:25 weitzman Exp $
+// $Id: command.inc,v 1.36 2009/05/27 19:38:12 adrian Exp $
 
 /**
  * @file
@@ -407,7 +407,7 @@ function _drush_find_commandfiles($phase) {
       $files = module_rebuild_cache();
       foreach ($files as $file) {
         if ($file->status) {
-          $searchpath[] = dirname($file->filepath);
+          $searchpath[] = dirname($file->filename);
         }
       }
      break;
