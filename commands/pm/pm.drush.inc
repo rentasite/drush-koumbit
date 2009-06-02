@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.38 2009/05/27 00:40:59 grugnog Exp $
+// $Id: pm.drush.inc,v 1.39 2009/06/02 19:37:41 weitzman Exp $
 
 /**
  * @file
@@ -731,7 +731,21 @@ function drush_pm_dl() {
       $project = $package['name'];
       // Don't rely on UPDATE_DEFAULT_URL since we are not fully bootstrapped.
       $url = 'http://updates.drupal.org/release-history' . "/$project/". $package['drupal_version'];
-      if ($xml = @simplexml_load_file($url)) {
+      
+      // A simple download, which is never available via CVS. 
+      // Some hosts have allow_url_fopen disabled.
+      if (!$xml = @simplexml_load_file($url)) {
+        if (!drush_shell_exec("wget $url")) {
+          drush_shell_exec("curl -O $url");
+        }
+        // Get the filename...
+        $filename = explode('/', $url);
+        $filename = array_pop($filename);
+        $xml = simplexml_load_file($filename);
+        drush_op('unlink', $filename);
+      }
+      
+      if ($xml) {
         if ($error = $xml->xpath('/error')) {
           drush_set_error('DRUSH_PM_COULD_NOT_LOAD_UPDATE_FILE', $error[0]);
         }
