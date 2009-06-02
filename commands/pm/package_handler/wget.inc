@@ -1,5 +1,5 @@
 <?php
-// $Id: wget.inc,v 1.4 2009/05/14 05:07:25 grugnog Exp $
+// $Id: wget.inc,v 1.5 2009/06/02 03:45:44 weitzman Exp $
 
 /**
  * @file Drush PM Wget extension
@@ -45,7 +45,7 @@ function package_handler_install_project($project, $info, $path = '.') {
   drush_shell_exec("gzip -d " . $filename);
   $tarpath = substr($filename, 0, strlen($filename)-3);
   // Untar
-  drush_shell_exec("tar -xf $tarpath -C $path");
+  drush_shell_exec("tar -xf $tarpath -C \"$path\"");
   // We're not using tar -xzf because that's not working on windows...
 
   // Remove the tarball
