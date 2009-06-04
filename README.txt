@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.23 2009/05/22 15:19:57 grugnog Exp $
+// $Id: README.txt,v 1.24 2009/06/04 01:54:11 weitzman Exp $
 
 DESCRIPTION
 -----------
@@ -111,7 +111,7 @@ This version of drush is designed for Drupal 6.x running on a Unix/Linux
 platform.
 
 * To use drush from the command line, you'll need a CLI-mode capable PHP
-  binary. The minimum required PHP version is 4.3.0 (PHP 5.x is OK, too).
+  binary. The minimum required PHP version is 5.2.
 * drush should also run on Windows, however, drush modules might make use of
   unix command line tools, so to use it effectively, you have to install
   some of them, e.g. from GnuWin32 (http://gnuwin32.sourceforge.net/).
