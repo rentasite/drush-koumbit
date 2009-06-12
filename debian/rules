@@ -9,15 +9,9 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-
-
-
-
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	# Add here commands to configure the package.
-
 	touch configure-stamp
 
 
@@ -26,8 +20,6 @@ build: build-stamp
 build-stamp: configure-stamp  
 	dh_testdir
 
-	# Add here commands to compile the package.
-	$(MAKE)
 	#docbook-to-man debian/drush.sgml > drush.1
 
 	touch $@
@@ -37,9 +29,6 @@ clean:
 	dh_testroot
 	rm -f build-stamp configure-stamp
 
-	# Add here commands to clean up after the build process.
-	$(MAKE) clean
-
 	dh_clean 
 
 install: build
@@ -48,16 +37,19 @@ install: build
 	dh_clean -k 
 	dh_installdirs
 
-	# Add here commands to install the package into debian/drush.
-	$(MAKE) DESTDIR=$(CURDIR)/debian/drush install
+	cp -r $(CURDIR)/commands $(CURDIR)/includes $(CURDIR)/debian/drush/usr/share/drush
+	cp -r $(CURDIR)/drush.php $(CURDIR)/debian/drush/usr/share/drush
+	cp -r $(CURDIR)/drush $(CURDIR)/debian/drush/usr/share/drush
+	chmod a+x $(CURDIR)/debian/drush/usr/share/drush
+	ln -s /usr/share/drush/drush $(CURDIR)/debian/drush/usr/bin/drush
 
-
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
 
 # Build architecture-dependent files here.
 binary-arch: build install
+# Nothing to do here, we're Arch: all
+
+# Build architecture-independent files here.
+binary-indep: build install
 	dh_testdir
 	dh_testroot
 	dh_installchangelogs 
