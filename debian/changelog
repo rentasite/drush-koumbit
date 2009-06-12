@@ -1,6 +1,8 @@
 drush (2.0-1) unstable; urgency=low
 
   * Initial release (Closes: #532723)
+  * Write a manpage
+  * Includes the table.inc file from PEAR's Console_Table
 
  -- Antoine Beaupré <anarcat@koumbit.org>  Thu, 11 Jun 2009 21:56:06 -0400
 
