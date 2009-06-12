@@ -8,8 +8,9 @@ Homepage: http://drupal.org/project/drush
 
 Package: drush
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, php5-cli (>= 5.2), wget
-Recommends: php5-mysql, php5-pgsql, cvs, svn
+Depends: ${shlibs:Depends}, ${misc:Depends}, php5-cli (>= 5.2)
+Recommends: wget
+Suggests: php5-mysql, php5-pgsql, cvs, svn
 Description: command line shell and Unix scripting interface for Drupal
  drush is a command line shell and Unix scripting interface for Drupal, a
  veritable Swiss Army knife designed to make life easier for those of us
