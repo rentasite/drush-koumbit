@@ -7,7 +7,7 @@ Standards-Version: 3.7.3
 Homepage: http://drupal.org/project/drush
 
 Package: drush
-Architecture: any
+Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, php5-cli (>= 5.2), wget
 Recommends: php5-mysql, php5-pgsql, cvs, svn
 Description: command line shell and Unix scripting interface for Drupal
