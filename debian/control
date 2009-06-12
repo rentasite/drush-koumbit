@@ -1,13 +1,21 @@
 Source: drush
-Section: unknown
-Priority: extra
-Maintainer: The Anarcat <anarcat@koumbit.org>
+Section: admin
+Priority: optional
+Maintainer: Antoine Beaupré <anarcat@koumbit.org>
 Build-Depends: debhelper (>= 7)
 Standards-Version: 3.7.3
-Homepage: <insert the upstream URL, if relevant>
+Homepage: http://drupal.org/project/drush
 
 Package: drush
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${shlibs:Depends}, ${misc:Depends}, php5-cli (>= 5.2), wget
+Recommends: php5-mysql, php5-pgsql, cvs, svn
+Description: command line shell and Unix scripting interface for Drupal
+ drush is a command line shell and Unix scripting interface for Drupal, a
+ veritable Swiss Army knife designed to make life easier for those of us
+ who spend some of our working hours hacking away at the command prompt.
+ 
+ Drush core ships with lots of useful commands for interacting with code
+ like modules/themes/profiles. Similarly, it runs update.php, executes
+ sql queries and DB migrations, and misc utilities like run cron or clear
+ cache.
