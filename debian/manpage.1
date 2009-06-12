@@ -32,13 +32,13 @@ executes sql queries and DB migrations, and misc utilities like run
 cron or clear cache.
 .SH OPTIONS
 .TP
-.B \-r <path>, \-\-root=<path>
+.BI \-r\  path ,\ \-\-root= path
 Drupal root directory to use (default: current directory)             
 .TP
-.B \-l <uri> , \-\-uri=<uri>
+.BI \-l\  uri ,\ \-\-uri= uri
 URI of the drupal site to use (only needed in multisite environments) 
 .TP
-.B \-v, \-\-verbose=2
+.BI \-v\  level ,\ \-\-verbose= level
 Display extra information about the command.                          
 .TP
 .B \-q, \-\-quiet
@@ -56,11 +56,11 @@ Simulate all relevant actions (don't actually change the system)
 .B \-i, \-\-include
 A list of paths to search for drush commands
 .TP
-.B \-c, \-\-config
+.BI \-c\  file ,\ \-\-config= file
 Specify a config file to use. See 
 .IR example.drushrc.php                 
 .TP
-.B \-u, \-\-user
+.BI \-u\  user ,\ \-\-user= user
 Specify a user to login with. May be a name or a number.              
 .TP
 .B \-b, \-\-backend
