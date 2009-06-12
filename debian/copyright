@@ -1,17 +1,18 @@
-This package was debianized by The Anarcat <anarcat@koumbit.org> on
+This package was debianized by Antoine Beaupré <anarcat@koumbit.org> on
 Thu, 11 Jun 2009 21:40:53 -0400.
 
-It was downloaded from <url://example.com>
+It was downloaded from <http://drupal.org/project/drush>
 
 Upstream Author(s):
 
-    <put author's name and email here>
-    <likewise for another author>
+    Arto Bendiken <http://bendiken.net/>
+    Franz Heinzmann (frando) <http://unbiskant.org/>
+    Moshe Weitzman <http://drupal.org/moshe>
 
 Copyright:
-
-    <Copyright (C) YYYY Name OfAuthor>
-    <likewise for another author>
+    2006 Arto Bendiken
+    2007 Franz Heinzmann
+    2008 - 2009 Moshe Weitzman
 
 License:
 
@@ -32,9 +33,5 @@ License:
 On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.
 
-The Debian packaging is (C) 2009, The Anarcat <anarcat@koumbit.org> and
+The Debian packaging is (C) 2009, Antoine Beaupré <anarcat@koumbit.org> and
 is licensed under the GPL, see above.
-
-
-# Please also look if there are files or directories which have a
-# different copyright/license attached and list them here.
