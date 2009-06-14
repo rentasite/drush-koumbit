@@ -1,3 +1,9 @@
+drush (2.0-2) unstable; urgency=medium
+
+  * don't use the bash wrapper because it breaks in cron
+
+ -- Antoine Beaupré <anarcat@koumbit.org>  Sun, 14 Jun 2009 16:47:43 -0400
+
 drush (2.0-1) unstable; urgency=low
 
   * Initial release (Closes: #532723)
