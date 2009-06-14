@@ -1,3 +1,11 @@
+drush (2.0-3) unstable; urgency=low
+
+  * make this work without warnings on sid, will now fail to build on lenny
+  * cleanup comments in watch and rules files
+  * update to standards 3.8.1
+
+ -- Antoine Beaupré <anarcat@koumbit.org>  Sun, 14 Jun 2009 17:10:59 -0400
+
 drush (2.0-2) unstable; urgency=medium
 
   * don't use the bash wrapper because it breaks in cron
