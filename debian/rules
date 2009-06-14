@@ -39,9 +39,8 @@ install: build
 
 	cp -r $(CURDIR)/commands $(CURDIR)/includes $(CURDIR)/debian/drush/usr/share/drush
 	cp -r $(CURDIR)/drush.php $(CURDIR)/debian/drush/usr/share/drush
-	cp -r $(CURDIR)/drush $(CURDIR)/debian/drush/usr/share/drush
-	chmod a+x $(CURDIR)/debian/drush/usr/share/drush
-	ln -s /usr/share/drush/drush $(CURDIR)/debian/drush/usr/bin/drush
+	chmod a+x $(CURDIR)/debian/drush/usr/share/drush.php
+	ln -s /usr/share/drush/drush $(CURDIR)/debian/drush/usr/bin/drush.php
 
 
 # Build architecture-dependent files here.
