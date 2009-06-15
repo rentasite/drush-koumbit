@@ -1,6 +1,7 @@
 drush (2.0-3) unstable; urgency=low
 
-  * make this work without warnings on sid, will now fail to build on lenny
+  * use dh_prep instead of dh_clean to silence warnings on sid. this will
+    now fail to build on lenny.
   * cleanup comments in watch and rules files
   * update to standards 3.8.1
 
