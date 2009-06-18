@@ -5,6 +5,8 @@ Maintainer: Antoine Beaupré <anarcat@koumbit.org>
 Build-Depends: debhelper (>= 7)
 Standards-Version: 3.8.1
 Homepage: http://drupal.org/project/drush
+Vcs-git: git://git.koumbit.net/drupal/drush
+Vcs-browser: http://git.koumbit.net/?p=drupal/drush
 
 Package: drush
 Architecture: all
