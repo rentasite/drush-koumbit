@@ -1,3 +1,10 @@
+drush (2.0-4~koumbit50+1) stable; urgency=low
+
+  * backport to lenny
+  * add VCS-* fields to debian/control file
+
+ -- Antoine Beaupré <anarcat@koumbit.org>  Wed, 17 Jun 2009 21:07:18 -0400
+
 drush (2.0-3) unstable; urgency=low
 
   * use dh_prep instead of dh_clean to silence warnings on sid. this will
