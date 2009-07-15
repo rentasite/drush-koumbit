@@ -1,3 +1,10 @@
+drush (2.0-4) unstable; urgency=low
+
+  * add DM-Upload-Allowed field since I am a Debian Maintainer
+  * add VCS-* fields to debian/control file
+
+ -- Antoine Beaupré <anarcat@koumbit.org>  Tue, 14 Jul 2009 21:03:32 -0400
+
 drush (2.0-4~koumbit50+1) stable; urgency=low
 
   * backport to lenny
