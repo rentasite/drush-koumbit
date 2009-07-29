@@ -1,3 +1,9 @@
+drush (2.0-5~koumbit50+1) stable; urgency=low
+
+  * backport to lenny
+
+ -- Antoine Beaupré <anarcat@koumbit.org>  Wed, 29 Jul 2009 17:48:18 -0400
+
 drush (2.0-5) unstable; urgency=low
 
   * fix copyright notice to claim GPL-2 (and not GPL-2+)
