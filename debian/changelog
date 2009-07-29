@@ -1,9 +1,3 @@
-drush (2.0-5~koumbit50+1) stable; urgency=low
-
-  * backport to lenny
-
- -- Antoine Beaupré <anarcat@koumbit.org>  Wed, 29 Jul 2009 17:48:18 -0400
-
 drush (2.0-5) unstable; urgency=low
 
   * fix copyright notice to claim GPL-2 (and not GPL-2+)
@@ -18,7 +12,13 @@ drush (2.0-5) unstable; urgency=low
     - #533496 ZoFreX - Drush does not like being invoked from a path that
       contains spaces
 
- -- Antoine Beaupré <anarcat@koumbit.org>  Wed, 29 Jul 2009 17:15:58 -0400
+ -- Antoine Beaupré <anarcat@koumbit.org>  Wed, 29 Jul 2009 17:52:18 -0400
+
+drush (2.0-5~koumbit50+1) stable; urgency=low
+
+  * backport to lenny
+
+ -- Antoine Beaupré <anarcat@koumbit.org>  Wed, 29 Jul 2009 17:48:18 -0400
 
 drush (2.0-4) unstable; urgency=low
 
