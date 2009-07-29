@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.40 2009/06/09 02:35:08 weitzman Exp $
+// $Id$
 
 /**
  * @file
@@ -541,7 +541,7 @@ function pm_dl_destination_lookup($type, $drupal_root, $sitepath, $create = FALS
       $destination = $drupal_root . '/';
       break;
     case 'profile':
-      $destination = $drupal_root . 'profiles/';
+      $destination = $drupal_root . '/profiles/';
       break;
   }
   if ($create) {
