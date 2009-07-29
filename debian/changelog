@@ -1,3 +1,15 @@
+drush (2.0-5) unstable; urgency=low
+
+  * fix copyright notice to claim GPL-2 (and not GPL-2+)
+  * backport a few fixes that have been committed to CVS after the 2.0
+    release
+    - #500324 dman - fails to download install profile in proper location. Incorrect path.
+    - #493456 by guidot. three tiny errors in drush help dl Examples ... Also a text improvement.
+    - #503328 - fix drush cron due to drush shutdown exiting. register exit helper in drush_shutdown. Thanks david goode
+    - #533496 ZoFreX - Drush does not like being invoked from a path that contains spaces
+
+ -- Antoine Beaupré <anarcat@koumbit.org>  Wed, 29 Jul 2009 17:15:58 -0400
+
 drush (2.0-4) unstable; urgency=low
 
   * fix paths in VCS fields
