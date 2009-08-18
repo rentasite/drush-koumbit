@@ -1,5 +1,5 @@
 <?php
-// $Id: svn.inc,v 1.5 2009/05/20 00:38:10 grugnog Exp $
+// $Id: svn.inc,v 1.6 2009/08/18 16:37:46 weitzman Exp $
 
 /**
  * @file Drush pm SVN extension
@@ -21,7 +21,7 @@ function version_control_is_versioned($source) {
  * Implementation of version_control_post_update().
  */
 function version_control_post_update($project, $info, $path = '.') {
-  if (version_control_is_versioned($project) && version_control_sync($project, $info, $path)) {
+  if (version_control_is_versioned($path) && version_control_sync($project, $info, $path)) {
     // Only attempt commit on a sucessful sync
     version_control_commit($project, $info, $path);
   }
@@ -31,7 +31,7 @@ function version_control_post_update($project, $info, $path = '.') {
  * Implementation of version_control_post_install().
  */
 function version_control_post_install($project, $info, $path = '.') {
-  if (version_control_is_versioned($project) && version_control_sync($project, $info, $path)) {
+  if (version_control_is_versioned($path) && version_control_sync($project, $info, $path)) {
     // Only attempt commit on a sucessful sync
     version_control_commit($project, $info, $path);
   }
@@ -44,7 +44,7 @@ function version_control_post_install($project, $info, $path = '.') {
 function version_control_sync($project, $info, $path = '.') {
   if (drush_get_option('svnsync')) {
     $errors = '';
-    if (drush_shell_exec('svn status '. drush_get_option('svnstatusparams') .' '. $project)) {
+    if (drush_shell_exec('svn status '. drush_get_option('svnstatusparams') .' '. $path.$project)) {
       $output = drush_shell_exec_output();
       foreach ($output as $line) {
         if (preg_match('/^\? *(.*)/', $line, $matches)) {
@@ -78,7 +78,7 @@ function version_control_commit($project, $info, $path = '.') {
     if (empty($message)) {
       $message = dt("Drush automatic commit: \n") . implode(' ', $_SERVER['argv']);
     }
-    if (drush_shell_exec('svn commit '. drush_get_option('svncommitparams') .' -m "'. $message .'" '. $project)) {
+    if (drush_shell_exec('svn commit '. drush_get_option('svncommitparams') .' -m "'. $message .'" '. $path.$project)) {
       drush_log(dt('Project committed to Subversion successfully'), 'ok');
     }
     else {
