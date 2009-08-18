@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.38 2009/07/07 23:34:53 grugnog Exp $
+// $Id: environment.inc,v 1.39 2009/08/18 19:17:29 weitzman Exp $
 
 /**
  * @file
@@ -667,9 +667,14 @@ function drush_cwd() {
 
 /**
  * Converts a Windows path (dir1\dir2\dir3) into a Unix path (dir1/dir2/dir3).
+ * Also converts a cygwin "drive emulation" path (/cygdrive/c/dir1) into a
+ * proper drive path, still with Unix slashes (c:/dir1).
  */
 function _drush_convert_path($path) {
-  return str_replace('\\','/', $path);
+  $path = str_replace('\\','/', $path);
+  $path = preg_replace('/^\/cygdrive\/([A-Za-z])(.*)$/', '\1:\2', $path);
+
+  return $path;
 }
 
 /**
