@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.41 2009/05/27 00:47:38 grugnog Exp $
+// $Id: drush.inc,v 1.42 2009/08/19 02:33:57 weitzman Exp $
 
 /**
  * @file
@@ -264,7 +264,7 @@ function drush_op($function) {
  *
  * @see t()
  */
-function dt($string, $args = NULL) {
+function dt($string, $args = array()) {
   if (function_exists('t')) {
     return t($string, $args);
   }

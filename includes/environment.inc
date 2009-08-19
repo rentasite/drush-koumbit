@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.39 2009/08/18 19:17:29 weitzman Exp $
+// $Id: environment.inc,v 1.40 2009/08/19 02:33:57 weitzman Exp $
 
 /**
  * @file
@@ -817,5 +817,35 @@ function drush_valid_db_credentials() {
   else {
     drush_log(dt('PDO support not available. Could not pre-validate database credentials. Assuming success'), 'bootstrap');
     return TRUE;
+  }
+}
+
+/**
+ * Get module information for all installed modules. Wrapper for _drush_get_modules().
+ *
+ * @return
+ *   An array containing module info for all installed modules or FALSE on error.
+ */
+function drush_get_modules() {
+  if(drush_include_engine('drupal', 'environment')){
+    return _drush_get_modules();
+  }
+  else {
+    return drush_set_error('DRUSH_CORE', dt('Drush was unable to load module information.'));
+  }
+}
+
+/**
+ * Get theme information for all installed themes. Wrapper for _drush_get_themes().
+ *
+ * @return
+ *   An array containing theme info for all installed themes or FALSE on error.
+ */
+function drush_get_themes() {
+  if(drush_include_engine('drupal', 'environment')){
+    return _drush_get_themes();
+  }
+  else {
+    return drush_set_error('DRUSH_CORE', dt('Drush was unable to load theme information.'));
   }
 }

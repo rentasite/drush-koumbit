@@ -1,5 +1,5 @@
 <?php
-// $Id: update_6.inc,v 1.8 2009/05/27 00:40:59 grugnog Exp $
+// $Id: update_6.inc,v 1.9 2009/08/19 02:33:56 weitzman Exp $
 /**
  * @file
  *   Update.php for provisioned sites.
@@ -149,8 +149,8 @@ function update_check_incompatibility($name, $type = 'module') {
 
   // Store values of expensive functions for future use.
   if (empty($themes) || empty($modules)) {
-    $themes = _system_theme_data();
-    $modules = module_rebuild_cache();
+    $themes = drush_get_themes();
+    $modules = drush_get_modules();
   }
 
   if ($type == 'module' && isset($modules[$name])) {

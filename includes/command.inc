@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.37 2009/08/15 13:37:45 weitzman Exp $
+// $Id: command.inc,v 1.38 2009/08/19 02:33:56 weitzman Exp $
 
 /**
  * @file
@@ -404,7 +404,7 @@ function _drush_find_commandfiles($phase) {
     case DRUSH_BOOTSTRAP_DRUPAL_FULL:
       // Add enabled module paths. Since we are bootstrapped,
       // we can use the Drupal API.
-      $files = module_rebuild_cache();
+      $files = drush_get_modules();
       foreach ($files as $file) {
         if ($file->status) {
           $searchpath[] = dirname($file->filename);
