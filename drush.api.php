@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.api.php,v 1.1 2009/08/25 17:45:32 weitzman Exp $
+// $Id: drush.api.php,v 1.2 2009/08/25 19:05:27 weitzman Exp $
 
 /**
  * @file
@@ -54,6 +54,24 @@ function hook_post_COMMAND() {
 function hook_drush_exit() {
 
 }
+
+/**
+ * Take action after a project has been downloaded.
+ */
+function hook_drush_pm_post_install($project, $release, $destination) {
+
+}
+
+/**
+ * Take action after a project has been updated.
+ */
+function hook_pm_post_update($release_name, $release_candidate_version, $project_parent_path) {
+
+}
+
+
+
+
 
 /**
  * @} End of "addtogroup hooks".
