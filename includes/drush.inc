@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.42 2009/08/19 02:33:57 weitzman Exp $
+// $Id: drush.inc,v 1.43 2009/09/10 04:17:54 weitzman Exp $
 
 /**
  * @file
@@ -750,6 +750,15 @@ function _drush_print_log($entry) {
   return $return;
 }
 
+// Log all timers for the request except standard page timer.
+// Useful for migrate commands. Lets see if others find it useful.
+// Called at end of request. @see drush.php
+function drush_log_timers() {
+  global $timers;
+  foreach ((array)$timers as $name => $timerec) {
+    drush_log("Timer '$name' is  "  . sprintf('%s sec.', round(timer_read($name)/1000, 3)), 'timer');
+  }
+}
 /**
 * Turn drupal_set_message errors into drush_log errors
 */

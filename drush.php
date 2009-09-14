@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-// $Id: drush.php,v 1.69 2009/06/30 01:01:59 adrian Exp $
+// $Id: drush.php,v 1.70 2009/09/10 04:17:54 weitzman Exp $
 
 /**
  * @file
@@ -77,6 +77,8 @@ function drush_main() {
           $command_found = TRUE;
           // Dispatch the command(s).
           $return = drush_dispatch($command);
+          
+          drush_log_timers();
           break;
         }
       }
