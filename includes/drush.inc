@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.44 2009/09/17 14:31:20 weitzman Exp $
+// $Id: drush.inc,v 1.45 2009/09/17 17:16:02 weitzman Exp $
 
 /**
  * @file
@@ -471,7 +471,11 @@ function drush_confirm($msg, $indent = 0) {
     print "y\n";
     return TRUE;
   }
-  while ($line = trim(fgets(STDIN))) {
+  // See http://drupal.org/node/499758 before changing this.
+  $stdin = fopen("php://stdin","r");
+  
+  while ($line = fgets($stdin)) {
+  $line = trim($line);
     if ($line == 'y') {
       return TRUE;
     }
