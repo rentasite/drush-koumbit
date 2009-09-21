@@ -1,5 +1,5 @@
 <?php
-// $Id: example.drush.inc,v 1.3 2009/04/15 01:13:45 weitzman Exp $
+// $Id: example.drush.inc,v 1.4 2009/09/21 00:53:24 weitzman Exp $
 
 /**
  * @file
@@ -36,7 +36,7 @@ function example_drush_command() {
     // the name of the function implementing your command.
     'callback' => 'example_callback',
     // a short description of your command
-    'description' => "Drush example command. It doesn't to a lot",
+    'description' => "Drush example command. It doesn't do a lot",
   );
 
   // more commands here ...
