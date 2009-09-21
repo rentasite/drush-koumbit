@@ -1,5 +1,5 @@
 <?php
-// $Id: updatecode.inc,v 1.11 2009/05/27 00:40:59 grugnog Exp $
+// $Id: updatecode.inc,v 1.12 2009/09/21 00:51:43 weitzman Exp $
 
 /**
  * Command callback. Displays update status info and allows to update installed modules.
@@ -140,7 +140,7 @@ function pm_update_packages($releases) {
       $backup_dir .= '/modules';
       @drush_op('mkdir', $backup_dir, 0777);
       $backup_dir .= "/$date";
-      drush_op('mkdir', $backup_dir, 0777);
+      @drush_op('mkdir', $backup_dir, 0777);
       $backup_target = $backup_dir . '/'. $release['name'];
       if (!drush_op('rename', $source, $backup_target)) {
         drush_die(dt('Failed to backup project directory !source to !backup_target', array('!source' => $source, '!backup_target' => $backup_target)));
