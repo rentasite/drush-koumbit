@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.40 2009/08/19 02:33:57 weitzman Exp $
+// $Id: environment.inc,v 1.41 2009/09/21 01:36:49 weitzman Exp $
 
 /**
  * @file
@@ -470,6 +470,10 @@ function _drush_bootstrap_drupal_root_validate() {
 function _drush_bootstrap_drupal_root() {
   $drupal_root = drush_set_context('DRUSH_DRUPAL_ROOT', drush_bootstrap_value('drupal_root'));
   define('DRUPAL_ROOT', $drupal_root);
+  
+  // Save original working dir case some command wants it.
+  drush_set_context('DRUSH_OLDCWD', getcwd());
+  
   chdir($drupal_root);
   drush_load_config('drupal');
   require_once(DRUSH_DRUPAL_BOOTSTRAP);
