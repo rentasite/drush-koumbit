@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.31 2009/08/19 02:33:56 weitzman Exp $
+// $Id: core.drush.inc,v 1.32 2009/09/21 01:41:04 weitzman Exp $
 
 /**
  * @file
@@ -295,13 +295,15 @@ function drush_core_status() {
  * Command callback. Runs "naked" php scripts.
  */
 function drush_core_script() {
-  $scripts = func_get_args();
-  foreach ($scripts as $script) {
-    $script_filename = drush_cwd() . '/' . $script;
-    if (file_exists($script_filename)) {
-      include($script_filename);
-    }
+  global $argv;
+  $argv = func_get_args();
+  $script = $argv[0];
+
+  $script_filename = drush_cwd() . '/' . $script;
+  if (file_exists($script_filename)) {
+    include($script_filename);
   }
+
 }
 
 function drush_core_cache_clear() {
