@@ -1,5 +1,5 @@
 <?php
-// $Id:
+// $Id: environment.inc,v 1.2 2009/09/21 23:58:27 weitzman Exp $
 /**
  * @file
  *   Helper functions for /includes/environment.php.
