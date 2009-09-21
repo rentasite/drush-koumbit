@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.18 2009/08/25 20:14:09 weitzman Exp $
+// $Id: sql.drush.inc,v 1.19 2009/09/21 00:56:43 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -98,7 +98,7 @@ function sql_drush_command() {
   }
   $items['sql cli'] = array(
     'callback' => 'drush_sql_cli',
-    'description' => 'Open a SQL command-line interface using Drupal’s credentials.',
+    'description' => "Open a SQL command-line interface using Drupal's credentials.",
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_CONFIGURATION,
     'options' => $options,
   );
