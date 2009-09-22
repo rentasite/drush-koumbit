@@ -1,5 +1,5 @@
 <?php
-// $Id: backend.inc,v 1.15 2009/05/20 21:26:55 adrian Exp $
+// $Id: backend.inc,v 1.16 2009/09/22 00:22:42 weitzman Exp $
 
 /**
  * @file Drush backend API
@@ -326,7 +326,8 @@ function _drush_backend_generate_command($command, &$data, $method = 'GET', $dru
     $command .= ' ' . escapeshellarg($arg);
   }
   // @TODO: Implement proper multi platform / multi server support.
-  $cmd = sprintf(escapeshellcmd("php %s %s %s --backend"), escapeshellcmd($drush_path), $option_str, $command);
+  $php  = drush_find_php();
+  $cmd = $php . sprintf(escapeshellcmd(" %s %s %s --backend"), escapeshellcmd($drush_path), $option_str, $command);
 
   if (!is_null($hostname)) {
     $username = (!is_null($username)) ? $username : get_current_user();

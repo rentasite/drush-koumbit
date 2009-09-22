@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-// $Id: drush.php,v 1.70 2009/09/10 04:17:54 weitzman Exp $
+// $Id: drush.php,v 1.71 2009/09/22 00:25:23 weitzman Exp $
 
 /**
  * @file
@@ -17,7 +17,7 @@ if (!drush_verify_cli()) {
 // Check supported version of PHP.
 define('DRUSH_MINIMUM_PHP', '5.2.0');
 if (version_compare(phpversion(), DRUSH_MINIMUM_PHP) < 0) {
-  die('Your PHP installation is too old. Drush requires at least PHP ' . DRUSH_MINIMUM_PHP . "\n");
+  die('Your command line PHP installation is too old. Drush requires at least PHP ' . DRUSH_MINIMUM_PHP . "\n");
 }
 
 define('DRUSH_BASE_PATH', dirname(__FILE__));
