@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.38 2009/08/19 02:33:56 weitzman Exp $
+// $Id: command.inc,v 1.39 2009/09/22 01:47:29 weitzman Exp $
 
 /**
  * @file
@@ -166,11 +166,19 @@ function drush_parse_command() {
 
   // We have found a command that matches. Set the appropriate values.
   if ($command) {
-    $arguments = array_reverse($arguments);
+    // Special case. Force help command if --help option was specified.
+    if (drush_get_option('help')) {
+      $arguments = array($command['command']);
+      $command = $implemented['help'];
+      $command['arguments'] = $arguments;
+    }
+    else {
+      $arguments = array_reverse($arguments);
 
-    // Merge specified callback arguments, which precede the arguments passed on the command line.
-    if (isset($command['callback arguments']) && is_array($command['callback arguments'])) {
-      $arguments = array_merge($command['callback arguments'], $arguments);
+      // Merge specified callback arguments, which precede the arguments passed on the command line.
+      if (isset($command['callback arguments']) && is_array($command['callback arguments'])) {
+        $arguments = array_merge($command['callback arguments'], $arguments);
+      }
     }
     $command['arguments'] = $arguments;
     drush_set_command($command);
