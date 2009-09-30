@@ -1,5 +1,5 @@
 <?php
-// $Id: updatecode.inc,v 1.12 2009/09/21 00:51:43 weitzman Exp $
+// $Id: updatecode.inc,v 1.13 2009/09/30 13:15:54 weitzman Exp $
 
 /**
  * Command callback. Displays update status info and allows to update installed modules.
@@ -16,8 +16,7 @@ function drush_pm_updatecode() {
   $releases = _pm_get_update_info();
 
   // Get specific requests
-  $command = drush_get_command();
-  $requests = $command['arguments'];
+  $requests = func_get_args();
 
   // Parse out project name and version
   $requests = pm_parse_project_version($requests);

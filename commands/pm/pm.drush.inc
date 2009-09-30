@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.48 2009/09/30 12:57:17 weitzman Exp $
+// $Id: pm.drush.inc,v 1.50 2009/09/30 13:30:19 weitzman Exp $
 
 /**
  * @file
@@ -164,16 +164,16 @@ function pm_drush_command() {
  * Command callback. Enables one or more modules.
  */
 function drush_pm_enable() {  
-  $command = drush_get_command();
-  return pm_module_manage($command['arguments'], TRUE);
+  $args = func_get_args();
+  return pm_module_manage($args, TRUE);
 }
 
 /**
  * Command callback. Disable one or more modules.
  */
 function drush_pm_disable() {
-  $command = drush_get_command();
-  return pm_module_manage($command['arguments'], FALSE);
+  $args = func_get_args();
+  return pm_module_manage($args, FALSE);
 }
 
 /**
@@ -181,8 +181,7 @@ function drush_pm_disable() {
  * // TODO: Use drupal_execute on system_modules_uninstall_confirm_form so that input is validated.
  */
 function drush_pm_uninstall() {
-  $command = drush_get_command();
-  $modules = $command['arguments'];
+  $modules = func_get_args();
     
   drush_print(dt('The following modules will be uninstalled: !modules', array('!modules' => implode(', ', $modules))));
   if(!drush_confirm(dt('Do you really want to continue?'))) {
@@ -345,7 +344,7 @@ function pm_dependencies(&$modules, $enabled, $module_info) {
     if (array_search($module, $enabled) !== FALSE) {
       // We find the module in the list of modules already enabled, ignore it.
       unset($modules[$key]);
-      drush_set_error('DRUSH_PM_ALREADY_ENABLED', dt('!module is already enabled.', array('!module' => $module_info[$module]->info['name'])));
+      drush_log(dt('!module is already enabled.', array('!module' => $module_info[$module]->info['name'])), 'ok');
     }
     else if (isset($module_info[$module])) {
       // This module is available, check for dependencies that are not already enabled.
