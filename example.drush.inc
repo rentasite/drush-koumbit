@@ -1,5 +1,5 @@
 <?php
-// $Id: example.drush.inc,v 1.4 2009/09/21 00:53:24 weitzman Exp $
+// $Id: example.drush.inc,v 1.5 2009/09/30 13:15:54 weitzman Exp $
 
 /**
  * @file
@@ -75,7 +75,7 @@ function example_drush_help($section) {
  *
  */
 function example_callback() {
-  $commands = func_get_args();
+  $args = func_get_args();
   
   // Using the Drupal API function 'format_interval()'
   // and Drush API function 'drush_print'
