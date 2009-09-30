@@ -11,33 +11,33 @@
  * For any command named "hook", the following hooks are called, in
  * order:
  *
- * 1. drush_module_hook_validate()
- * 2. drush_module_pre_hook()
- * 3. drush_module_hook()
- * 4. drush_module_post_hook()
+ * 1. drush_hook_COMMAND_validate()
+ * 2. drush_hook_pre_COMMAND()
+ * 3. drush_hook_COMMAND()
+ * 4. drush_hook_post_COMMAND()
  *
  * If any of those fails, the rollback mechanism is called. It will
  * call, in reverse, all _rollback hooks. So if, for example, the
  * drush_post_hook() call fails, the following hooks will be called:
  *
- * 1. drush_module_post_hook_rollback()
- * 2. drush_module_hook_rollback()
- * 3. drush_module_pre_hook_rollback()
- * 4. drush_module_hook_validate_rollback()
+ * 1. drush_hook_post_COMMAND_rollback()
+ * 2. drush_hook_COMMAND_rollback()
+ * 3. drush_hook_pre_COMMAND_rollback()
+ * 4. drush_hook_COMMAND_validate_rollback()
  *
  * Before any command is called, drush_hook_init() is also called.
  *
  * @see includes/command.inc
  *
  * @see drush_hook_init()
- * @see drush_hook_validate()
- * @see drush_pre_hook()
- * @see drush_hook()
- * @see drush_post_hook()
- * @see drush_post_hook_rollback()
- * @see drush_hook_rollback()
- * @see drush_pre_hook_rollback()
- * @see drush_hook_validate_rollback()
+ * @see drush_hook_COMMAND_validate()
+ * @see drush_hook_pre_COMMAND()
+ * @see drush_hook_COMMAND()
+ * @see drush_hook_post_COMMAND()
+ * @see drush_hook_post_COMMAND_rollback()
+ * @see drush_hook_COMMAND_rollback()
+ * @see drush_hook_pre_COMMAND_rollback()
+ * @see drush_hook_COMMAND_validate_rollback()
  */
 
 /**
@@ -48,7 +48,7 @@
 /**
  * Take action before any command is run. Logging an error stops command execution.
  */
-function hook_drush_init() {
+function drush_hook_init() {
 
 }
 
@@ -58,9 +58,9 @@ function hook_drush_init() {
  * Logging an error stops command execution, and the rollback function (if any)
  * for each hook implementation is invoked
  *
- * @see drush_hook_command_validate_rollback()
+ * @see drush_hook_COMMAND_validate_rollback()
  */
-function drush_hook_command_validate() {
+function drush_hook_COMMAND_validate() {
 
 }
 
@@ -71,10 +71,10 @@ function drush_hook_command_validate() {
  * for each hook implementation is invoked, in addition to the
  * validate rollback
  *
- * @see drush_hook_pre_command_rollback()
- * @see drush_hook_command_validate_rollback()
+ * @see drush_hook_pre_COMMAND_rollback()
+ * @see drush_hook_COMMAND_validate_rollback()
  */
-function drush_hook_pre_command() {
+function drush_hook_pre_COMMAND() {
 
 }
 
@@ -87,11 +87,11 @@ function drush_hook_pre_command() {
  * for each hook implementation is invoked, in addition to pre and
  * validate rollbacks.
  *
- * @see drush_hook_command_rollback()
- * @see drush_hook_pre_command_rollback()
- * @see drush_hook_command_validate_rollback()
+ * @see drush_hook_COMMAND_rollback()
+ * @see drush_hook_pre_COMMAND_rollback()
+ * @see drush_hook_COMMAND_validate_rollback()
  */
-function drush_hook_command() {
+function drush_hook_COMMAND() {
 
 }
 
@@ -102,12 +102,12 @@ function drush_hook_command() {
  * for each hook implementation is invoked, in addition to pre, normal
  * and validate rollbacks.
  *
- * @see drush_hook_post_command_rollback()
- * @see drush_hook_command_rollback()
- * @see drush_hook_pre_command_rollback()
- * @see drush_hook_command_validate_rollback()
+ * @see drush_hook_post_COMMAND_rollback()
+ * @see drush_hook_COMMAND_rollback()
+ * @see drush_hook_pre_COMMAND_rollback()
+ * @see drush_hook_COMMAND_validate_rollback()
  */
-function drush_hook_post_command() {
+function drush_hook_post_COMMAND() {
 
 }
 
