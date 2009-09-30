@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.50 2009/09/30 13:30:19 weitzman Exp $
+// $Id: pm.drush.inc,v 1.51 2009/09/30 13:58:56 weitzman Exp $
 
 /**
  * @file
@@ -479,7 +479,7 @@ function drush_pm_update() {
  * Execute updatedb command after an updatecode - user requested `update`.
  */
 function drush_pm_post_update() {
-  drush_backend_invoke("updatedb");
+  drush_invoke("updatedb");
 }
 
 /**
