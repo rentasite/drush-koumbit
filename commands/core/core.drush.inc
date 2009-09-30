@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.32 2009/09/21 01:41:04 weitzman Exp $
+// $Id: core.drush.inc,v 1.33 2009/09/30 05:07:23 weitzman Exp $
 
 /**
  * @file
@@ -277,8 +277,12 @@ function _core_site_credentials() {
  *
  */
 function drush_core_cron() {
-  drupal_cron_run();
-  drush_print(dt('Cron run successfully.'));
+  if (drupal_cron_run()) {
+    drush_log(dt('Cron run successfully.'), 'success');
+  }
+  else {
+    drush_set_error('DRUSH_CRON_FAILED', dt('Cron run failed.'));
+  }
 }
 
 /**
