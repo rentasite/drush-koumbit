@@ -1,5 +1,5 @@
 <?php
-// $Id: pm.drush.inc,v 1.49 2009/09/30 13:15:54 weitzman Exp $
+// $Id: pm.drush.inc,v 1.50 2009/09/30 13:30:19 weitzman Exp $
 
 /**
  * @file
@@ -344,7 +344,7 @@ function pm_dependencies(&$modules, $enabled, $module_info) {
     if (array_search($module, $enabled) !== FALSE) {
       // We find the module in the list of modules already enabled, ignore it.
       unset($modules[$key]);
-      drush_set_error('DRUSH_PM_ALREADY_ENABLED', dt('!module is already enabled.', array('!module' => $module_info[$module]->info['name'])));
+      drush_log(dt('!module is already enabled.', array('!module' => $module_info[$module]->info['name'])), 'ok');
     }
     else if (isset($module_info[$module])) {
       // This module is available, check for dependencies that are not already enabled.
