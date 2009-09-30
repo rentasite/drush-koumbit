@@ -1,5 +1,5 @@
 <?php
-// $Id: context.inc,v 1.9 2009/09/22 19:30:41 weitzman Exp $
+// $Id: context.inc,v 1.10 2009/09/30 02:32:09 weitzman Exp $
 /**
  * @file
  * The Drush context API implementation.
@@ -110,6 +110,8 @@ function _drush_config_file($context) {
  */
 function drush_load_config($context) {
   global $drush_conf_override;
+  
+  $drush_conf_override = array();
 
   $config = _drush_config_file($context);
   if (file_exists($config)) {
