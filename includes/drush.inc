@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.48 2009/09/30 23:38:45 weitzman Exp $
+// $Id: drush.inc,v 1.49 2009/10/01 14:13:29 weitzman Exp $
 
 /**
  * @file
@@ -303,7 +303,7 @@ function drush_get_option_help() {
 }
 
 /**
- * Prints out the default drush help page.
+ * Prints out help for a given command.
  */
 function drush_show_help($commands) {
   $phases = _drush_bootstrap_phases();
@@ -326,7 +326,8 @@ function drush_show_help($commands) {
             $command = array_merge_recursive($command, $engine);
           }
         }
-        $help = drush_command_invoke_all('drush_help', 'drush:'. $commandstring);
+        
+        $help = drush_command_invoke_all('drush_help', 'drush:'. $command['command']);
         if (!empty($help)) {
           drush_print(wordwrap(implode("\n", $help), drush_get_context('DRUSH_COLUMNS', 80)));
           drush_print();
@@ -350,10 +351,16 @@ function drush_show_help($commands) {
               drush_print();
             }
           }
+
+          // Append aliases if any.
+          if ($command['aliases']) {
+            drush_print(dt("Aliases: ") . implode(', ', $command['aliases']));
+          }
+          
           return TRUE;
         }
         else {
-          drush_print("No help available for command 'drush $commandstring'.");
+          drush_print("No help available for command '$commandstring'.");
           return TRUE;
         }
       }

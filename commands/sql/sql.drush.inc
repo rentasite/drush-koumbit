@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.20 2009/09/30 13:41:01 weitzman Exp $
+// $Id: sql.drush.inc,v 1.21 2009/10/01 14:13:29 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -71,6 +71,7 @@ function sql_drush_command() {
        'query' => 'A SQL query. Mandatory.',
     ),
     'options' => $options,
+    'aliases' => array('sqlq'),
   );
   $items['sql load'] = array(
     'callback' => 'drush_sql_load',
@@ -101,6 +102,7 @@ function sql_drush_command() {
     'description' => "Open a SQL command-line interface using Drupal's credentials.",
     'bootstrap' => DRUSH_BOOTSTRAP_DRUPAL_CONFIGURATION,
     'options' => $options,
+    'aliases' => array('sqlc'),
   );
   return $items;
 }
