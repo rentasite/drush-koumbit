@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.43 2009/09/22 19:30:41 weitzman Exp $
+// $Id: environment.inc,v 1.44 2009/10/01 17:24:00 weitzman Exp $
 
 /**
  * @file
@@ -428,6 +428,9 @@ function _drush_bootstrap_drush() {
   // Backend implies affirmative
   drush_set_context('DRUSH_AFFIRMATIVE', drush_get_option(array('y', 'yes', 'b', 'backend'), FALSE));
   drush_set_context('DRUSH_SIMULATE',    drush_get_option(array('s', 'simulate'), FALSE));
+
+  // Suppress colored logging
+  drush_set_context('DRUSH_NOCOLOR', drush_get_option(array('n', 'nocolor'), FALSE));
 
   // Find any command files that are available during this bootstrap phase.
   _drush_find_commandfiles(DRUSH_BOOTSTRAP_DRUSH);
