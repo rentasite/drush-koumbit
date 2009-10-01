@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.39 2009/09/22 01:47:29 weitzman Exp $
+// $Id: command.inc,v 1.40 2009/10/01 14:13:29 weitzman Exp $
 
 /**
  * @file
@@ -112,6 +112,12 @@ function drush_get_commands() {
         drush_enforce_requirement_core($command);
         drush_enforce_requirement_drupal_dependencies($command);
         $commands[$key] = $command;
+        if (isset($command['aliases']) && count($command['aliases'])) {
+          foreach ($command['aliases'] as $alias) {
+            $commands[$alias] = $command;
+            $commands[$alias]['is_alias'] = TRUE;
+          }
+        }
       }
     }
   }
