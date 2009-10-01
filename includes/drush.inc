@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.47 2009/09/28 19:07:14 weitzman Exp $
+// $Id: drush.inc,v 1.48 2009/09/30 23:38:45 weitzman Exp $
 
 /**
  * @file
@@ -430,10 +430,11 @@ function drush_die($msg = NULL, $status = NULL) {
 }
 
 /**
- * Prints a message with optional indentation. In general, drush_log() is often
- * a better choice that this function. That gets your confirmation message (for example)
- * into the logs for this drush request. Consider that drush requests may be 
- * executed remotely and non interactively.
+ * Prints a message with optional indentation. In general, 
+ * drush_log($message, 'ok') is often a better choice than this function. 
+ * That gets your confirmation message (for example) into the logs for this 
+ * drush request. Consider that drush requests may be executed remotely and 
+ * non interactively.
  * 
  * @param $message
  *   The message to print.

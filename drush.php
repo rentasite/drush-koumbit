@@ -1,6 +1,5 @@
-#!/usr/bin/env php
 <?php
-// $Id: drush.php,v 1.71 2009/09/22 00:25:23 weitzman Exp $
+// $Id: drush.php,v 1.72 2009/09/30 15:27:46 weitzman Exp $
 
 /**
  * @file
