@@ -1,5 +1,5 @@
 <?php
-// $Id: update_7.inc,v 1.9 2009/08/19 02:33:56 weitzman Exp $
+// $Id: update_7.inc,v 1.10 2009/10/01 16:02:20 weitzman Exp $
 /**
  * @file
  *   Update.php for provisioned sites.
@@ -574,6 +574,7 @@ function _update_do_one($module, $number, &$context) {
     if (function_exists($function)) {
       drush_log("Running $function");
       $ret = $function($context['sandbox']);
+      $context['results'][$module] = $ret;
     }
     _drush_log_update_sql($ret);
   }
