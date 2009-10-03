@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.41 2009/10/01 18:29:03 weitzman Exp $
+// $Id: command.inc,v 1.42 2009/10/03 17:42:26 weitzman Exp $
 
 /**
  * @file
@@ -99,6 +99,8 @@ function drush_get_commands() {
           'description' => NULL,
           'arguments' => array(),
           'options' => array(),
+          'examples' => array(),
+          'aliases' => array(),
           'extras' => array(),
           'core' => array(),
           'scope' => 'site',
