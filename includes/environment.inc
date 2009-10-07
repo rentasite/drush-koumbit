@@ -1,5 +1,5 @@
 <?php
-// $Id: environment.inc,v 1.46 2009/10/05 02:51:34 weitzman Exp $
+// $Id: environment.inc,v 1.47 2009/10/07 16:23:20 weitzman Exp $
 
 /**
  * @file
@@ -430,8 +430,8 @@ function _drush_bootstrap_drush() {
   drush_set_context('DRUSH_SIMULATE',    drush_get_option(array('s', 'simulate'), FALSE));
 
   // Suppress colored logging if --nocolor option is explicitly given or if
-  // terminal does not support it (Windows command prompt has no TERM set).
-  $nocolor = (drush_get_option(array('n', 'nocolor'), FALSE) || (substr(PHP_OS, 0, 3) == 'WIN' && !getenv('TERM')));
+  // terminal does not support it.
+  $nocolor = (drush_get_option(array('n', 'nocolor'), FALSE) || !getenv('TERM'));
   if (!$nocolor) {
     // Check for colorless terminal.
     $colors = exec('tput colors 2>&1');
