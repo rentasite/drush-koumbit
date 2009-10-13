@@ -1,5 +1,5 @@
 <?php
-// $Id: sql.drush.inc,v 1.21 2009/10/01 14:13:29 weitzman Exp $
+// $Id: sql.drush.inc,v 1.22 2009/10/13 02:48:08 weitzman Exp $
 
 /**
  * @file Drush sql commands
@@ -312,7 +312,7 @@ function drush_sql_load($source, $destination) {
 function drush_sql_cli() {
   switch (_drush_sql_get_scheme()) {
     case 'mysql':
-      $command = 'mysql -A' . (drush_get_context('DRUSH_VERBOSE') ? ' -v' : '');
+      $command = 'mysql ' . (drush_get_context('DRUSH_VERBOSE') ? ' -v' : '');
       $command .= _drush_sql_get_credentials();
       break;
     case 'pgsql':
