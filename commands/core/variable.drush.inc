@@ -1,5 +1,5 @@
 <?php
-// $Id: variable.drush.inc,v 1.1 2009/10/13 02:23:58 weitzman Exp $
+// $Id: variable.drush.inc,v 1.2 2009/10/15 16:48:15 weitzman Exp $
 
 /**
  * Implementation of hook_drush_help().
@@ -87,7 +87,7 @@ function variable_drush_command() {
  * Command callback.
  * List your site's variables.
  */
-function drush_variable_get() {
+function drush_variable_variable_get() {
   $args = func_get_args();
   $placeholders = array();
   $sql = '';
@@ -118,7 +118,7 @@ function drush_variable_get() {
  * Command callback.
  * Set a variable.
  */
-function drush_variable_set() {
+function drush_variable_variable_set() {
   $args = func_get_args();
   if (!isset($args[0])) {
     drush_set_error('DRUSH_VARIABLE_ERROR', dt('No variable specified.'));
@@ -175,7 +175,7 @@ function drush_variable_set() {
  * Command callback.
  * Delete a variable.
  */
-function drush_variable_delete() {
+function drush_variable_variable_delete() {
   $args = func_get_args();
   if (!isset($args[0])) {
     drush_set_error('DRUSH_VARIABLE_ERROR', dt('No variable specified'));
