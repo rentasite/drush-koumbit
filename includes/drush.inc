@@ -1,5 +1,5 @@
 <?php
-// $Id: drush.inc,v 1.52 2009/10/15 15:27:36 weitzman Exp $
+// $Id: drush.inc,v 1.53 2009/10/18 03:57:35 weitzman Exp $
 
 /**
  * @file
@@ -205,6 +205,26 @@ function drush_drupal_major_version() {
     }
   }
   return $major_version;
+}
+
+/**
+ * A db_result() that works for any version of Drupal.
+ *
+ * @param
+ *   A Database result object.
+ */ 
+function drush_db_result($result) {
+  return drush_drupal_major_version() >= 7 ? $result->fetchField() : db_result($result);
+}
+
+/**
+ * A db_fetch_object() that works for any version of Drupal.
+ *
+ * @param
+ *   A Database result object.
+ */ 
+function drush_db_fetch_object($result) {
+  return drush_drupal_major_version() >= 7 ? $result->fetchObject() : db_fetch_object($result);
 }
 
 /**
