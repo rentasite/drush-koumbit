@@ -1,5 +1,5 @@
 <?php
-// $Id: variable.drush.inc,v 1.3 2009/10/18 03:57:35 weitzman Exp $
+// $Id: variable.drush.inc,v 1.4 2009/10/19 17:26:27 weitzman Exp $
 
 /**
  * Implementation of hook_drush_help().
@@ -218,7 +218,7 @@ function drush_variable_like($arg) {
     $result = db_query("SELECT name FROM {variable} WHERE name LIKE :keyword ORDER by name ASC", array(':keyword' => $arg . '%'));
   }
   else {
-    $result = db_query("SELECT name FROM {variable} WHERE name LIKE '%s' ORDER BY name ASC", $arg);
+    $result = db_query("SELECT name FROM {variable} WHERE name LIKE '%s%' ORDER BY name ASC", $arg);
   }
   return $result;
 }
