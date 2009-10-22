@@ -1,5 +1,5 @@
 <?php
-// $Id: command.inc,v 1.43 2009/10/22 03:35:03 weitzman Exp $
+// $Id: command.inc,v 1.44 2009/10/22 14:57:06 adrian Exp $
 
 /**
  * @file
@@ -422,8 +422,10 @@ function _drush_find_commandfiles($phase) {
       // we can use the Drupal API.
       $files = drush_get_modules();
       foreach ($files as $file) {
-        if ($file->status) {
-          $searchpath[] = dirname($file->filename);
+        if (isset($file->status)) {
+          if ($file->status) {
+            $searchpath[] = dirname($file->filename);
+          }
         }
       }
      break;
