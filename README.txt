@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.26 2009/09/30 15:18:40 weitzman Exp $
+// $Id: README.txt,v 1.27 2009/10/22 04:12:33 weitzman Exp $
 
 DESCRIPTION
 -----------
@@ -109,8 +109,6 @@ REQUIREMENTS
 * drush should also run on Windows, however, drush modules might make use of
   unix command line tools, so to use it effectively, you have to install
   some of them, e.g. from GnuWin32 (http://gnuwin32.sourceforge.net/).
-  The READMEs of the individual command files should state which binaries
-  are required.
 
 FAQ
 ---
