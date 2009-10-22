@@ -1,5 +1,5 @@
 <?php
-// $Id: core.drush.inc,v 1.40 2009/10/22 01:57:52 weitzman Exp $
+// $Id: core.drush.inc,v 1.41 2009/10/22 03:35:02 weitzman Exp $
 
 /**
  * @file
@@ -382,7 +382,7 @@ function drush_core_script() {
     $all = array();
     foreach($searchpath as $key => $path) {
       $recurse = !$key == 'cwd';
-      $all = $all + array_keys(drush_scan_directory($path, '\.php$', array('.', '..', 'CVS'), NULL, $recurse));
+      $all = $all + array_keys(drush_scan_directory($path, '/\.php$/', array('.', '..', 'CVS'), NULL, $recurse));
     }
     drush_print(implode("\n", $all));
   }
