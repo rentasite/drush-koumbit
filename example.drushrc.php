@@ -1,5 +1,5 @@
 <?php
-// $Id: example.drushrc.php,v 1.12 2009/09/03 11:54:58 weitzman Exp $
+// $Id: example.drushrc.php,v 1.13 2009/10/22 01:57:51 weitzman Exp $
 
 /*
  * Examples of valid statements for a drushrc.php file. Use this file to cut down on
@@ -64,6 +64,10 @@ $options['structure-tables'] = array(
 // Use cvs checkouts when downloading and updating modules.
 // An example of a command specific argument being set in drushrc.php
 // $options['package-handler'] = 'cvs';
+
+// Specify additional directories to search for scripts
+// Use POSIX path separator (':')
+# $options['script-path'] = 'sites/all/scripts:profiles/myprofile/scripts';
 
 /**
  * Variable overrides:
